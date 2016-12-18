@@ -1,0 +1,3070 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0061)http://technet.microsoft.com/en-us/library/bb734903.aspx#EIAA -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="canonical" href="http://technet.microsoft.com/en-us/library/bb734903.aspx"><title>
+	
+  Chapter 10 - Working with Performance Counters
+
+</title>
+    
+
+
+<link rel="alternate" media="print" href="http://technet.microsoft.com/en-us/library/bb734903(d=printer).aspx">
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/bb734903(d=lightweight,l=en-us,v=technet.10).aspx">
+
+<meta name="NormalizedUrl" content="http://technet.microsoft.com/en-us/library/bb734903(d=lightweight,l=en-us,v=technet.10).aspx">
+
+<meta name="VotingContextUrl" content="http://technet.microsoft.com/en-us/library/bb734903(d=lightweight,l=en-us,v=technet.10).aspx">
+
+<meta name="MN" content="D7264B62-11:12:22 PM">
+
+<meta name="Search.ShortId" content="bb734903">
+
+<meta name="Ms.Locale" content="en-us">
+<link rel="stylesheet" type="text/css" href="./Chapter 10 - Working with Performance Counters_files/Combined.css"><link rel="stylesheet" type="text/css" href="./Chapter 10 - Working with Performance Counters_files/printview.css" media="print"><script type="text/javascript" async="" src="./Chapter 10 - Working with Performance Counters_files/ms2.js"></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.technet.microsoft.com", 
+	"js": "http://i2.technet.microsoft.com", 
+	"css": "http://i3.technet.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected">try {
+//
+    MTPS = window.MTPS || {};
+    MTPS.Watermarks = window.MTPS.Watermarks || {};
+    MTPS.Watermarks.SearchInput = {
+        "control": "SearchInput",
+        "defaultValue": "Search TechNet with Bing",
+        "defaultCSS": "searchTextBox",
+        "focusCSS": "searchTextBoxTrue"
+    };
+    function checkSearchBox() {
+        if (document.getElementById("SearchInput").value == MTPS.Watermarks.SearchInput.defaultValue) {
+            document.getElementById("SearchInput").value = "";
+        }
+    }
+ //
+} finally { MTPS._injectNextScript_1 && MTPS._injectNextScript_1(); }</script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/en-us/library/bb734903(d=lightweight,l=en-us,v=technet.10).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'technet.microsoft.com';
+  var wt_pathlist = '/technet/';
+  var wt_paramlist = 'DCSext.mtps_techcenter';
+  var wt_siteid = 'TECHNET';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsjwb9vb00000c932fd0rjc7_5p3t';
+  var gFpc = 'WT_FPC';
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+  var detectedLocale = 'en-us';
+  var wtsp = '_technet_';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "7013912f-3299-44b5-82ff-42a62a4f2261";
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script class="mtps-injected" src="./Chapter 10 - Working with Performance Counters_files/Combined.js"></script><script class="mtps-injected" src="./Chapter 10 - Working with Performance Counters_files/jquery-1.8.2.min.js"></script><script class="mtps-injected" src="./Chapter 10 - Working with Performance Counters_files/Combined(1).js"></script><script class="mtps-injected">try {
+/**/
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.technet.microsoft.com", 
+	"js": "http://i2.technet.microsoft.com", 
+	"css": "http://i3.technet.microsoft.com"
+});
+/**/
+/**/
+} finally { MTPS._injectNextScript_7 && MTPS._injectNextScript_7(); }</script><script class="mtps-injected">try {
+/**/
+var omnitureTracking = true;
+/**/
+} finally { MTPS._injectNextScript_8 && MTPS._injectNextScript_8(); }</script><script class="mtps-injected" src="./Chapter 10 - Working with Performance Counters_files/megablade.1.js"></script><script class="mtps-injected">try {
+//
+    MTPS = window.MTPS || {};
+    MTPS.ExportValues = window.MTPS.ExportValues || {};
+    MTPS.ExportValues.PrintMultipleUrl = "/en-us/library/export/print/?returnurl=%252fen-us%252flibrary%252fbb734903.aspx";
+    MTPS.ExportValues.PrintHelpUrl = "/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fbb734903.aspx";
+    //
+} finally { MTPS._injectNextScript_10 && MTPS._injectNextScript_10(); }</script><script class="mtps-injected" src="./Chapter 10 - Working with Performance Counters_files/Toc.js"></script><script class="mtps-injected">try {
+//
+    MTPS = window.MTPS || {};
+    MTPS.TopicNodes = {
+        'last' : ''
+    };
+    //
+} finally { MTPS._injectNextScript_12 && MTPS._injectNextScript_12(); }</script><script class="mtps-injected" src="./Chapter 10 - Working with Performance Counters_files/Combined(2).js"></script><script src="./Chapter 10 - Working with Performance Counters_files/broker.js"></script></head>
+<body>
+    
+        
+        
+        
+        
+        
+             
+        
+
+    <div class="header cl_header">
+        
+
+
+
+
+
+    <link type="text/css" rel="stylesheet" href="./Chapter 10 - Working with Performance Counters_files/Megablade.1.css" data-do-not-move="true" xmlns="http://www.w3.org/1999/xhtml">
+    <div id="megabladeContainer" xmlns="http://www.w3.org/1999/xhtml" style="">
+        <div id="megabladeContainerCenter">
+            <ul id="megabladeItems">
+                <li class="Logo"><a href="http://technet.microsoft.com/" title="TechNet">TechNet</a></li>
+                        <li data-value="hh326172" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">Products</a><span class="caret"></span></li>
+                        <li data-value="hh880860" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">IT Resources</a><span class="caret"></span></li>
+                        <li data-value="hh371326" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">Downloads</a><span class="caret"></span></li>
+                        <li data-value="jj837158" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">Training</a><span class="caret"></span></li>
+                        <li data-value="hh371327" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">Support</a><span class="caret"></span></li>
+            </ul>
+            <div class="bladeItemMenuContainer">
+                    <div data-value="hh326172" class="bladeItemMenu" style="display: none;">
+                        <div class="menuContainerLayout">
+  <h5>Products</h5>
+  <ul>
+    <li style="min-height:50px;width:176px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/windows">
+        <img alt="" height="470" style="left:0;top:0;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 16px 0 16px 6px;vertical-align:top;" href="http://technet.microsoft.com/windows">Windows</a>
+    </li>
+    <li style="min-height:50px;width:176px;padding-top:10px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/windowsserver">
+        <img alt="" height="470" style="left:0;top:-429px;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 7px 0 7px 6px;vertical-align:top;" href="http://technet.microsoft.com/windowsserver">Windows<br>Server</a>
+    </li>
+    <li style="min-height:50px;width:176px;padding-top:10px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/systemcenter">
+        <img alt="" height="470" style="left:0;top:-275px;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 7px 0 7px 6px;vertical-align:top;" href="http://technet.microsoft.com/systemcenter">System<br>Center</a>
+    </li>
+    <li style="min-height:50px;width:176px;padding-top:10px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/ie">
+        <img alt="" height="470" style="left:0;top:-330px;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 7px 0 7px 6px;vertical-align:top;" href="http://technet.microsoft.com/ie">Internet<br>Explorer</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayout">
+  <h5>&nbsp;</h5>
+  <ul>
+    <li style="min-height:50px;width:176px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/office">
+        <img alt="" height="470" style="left:0;top:-110px;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 16px 0 16px 6px;vertical-align:top;" href="http://technet.microsoft.com/office">Office</a>
+    </li>
+    <li style="min-height:50px;width:176px;padding-top:10px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/office365">
+        <img alt="" height="470" style="left:0;top:-110px;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 16px 0 16px 6px;vertical-align:top;" href="http://technet.microsoft.com/office365">Office 365</a>
+    </li>
+    <li style="min-height:50px;width:176px;padding-top:10px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/exchange">
+        <img alt="" height="470" style="left:0;top:-55px;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 7px 0 7px 6px;vertical-align:top;" href="http://technet.microsoft.com/exchange">Exchange<br>Server</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayout">
+  <h5>&nbsp;</h5>
+  <ul>
+    <li style="min-height:50px;width:176px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/sql">
+        <img alt="" height="470" style="left:0;top:-220px;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 16px 0 16px 6px;vertical-align:top;" href="http://technet.microsoft.com/sql">SQL Server</a>
+    </li>
+    <li style="min-height:50px;width:176px;padding-top:10px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/sharepoint">
+        <img alt="" height="470" style="left:0;top:-165px;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 7px 0 7px 6px;vertical-align:top;" href="http://technet.microsoft.com/sharepoint">SharePoint<br>Products</a>
+    </li>
+    <li style="min-height:50px;width:176px;padding-top:10px;">
+      <a style="height:50px;width:50px;position:relative;overflow:hidden;display:inline-block;background:#ccc;" href="http://technet.microsoft.com/lync">
+        <img alt="" height="470" style="left:0;top:-165px;position:relative;" width="50" src="./Chapter 10 - Working with Performance Counters_files/ff404193.productLogoSprite_transparent(en-us,MSDN.10).png">
+      </a>
+      <a style="display:inline-block;width:auto;padding: 16px 0 16px 6px;vertical-align:top;" href="http://technet.microsoft.com/lync">Lync</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/en-us/bb421517.aspx?wt.svl=more_centers_link">See all products »</a>
+    </li>
+  </ul>
+</div>
+                    </div>
+                    <div data-value="hh880860" class="bladeItemMenu" style="display: none;">
+                        <div class="menuContainerLayout">
+  <h5>Resources</h5>
+  <ul>
+    <li>
+      <a href="http://technet.microsoft.com/evalcenter">Evaluation Center</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/bb291022">Learning Resources</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/hh770201">Microsoft IT Camps</a>
+    </li>
+    <li>
+      <a href="http://www.microsoftvirtualacademy.com/Home.aspx">Microsoft Virtual Academy</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/scriptcenter">Script Center</a>
+    </li>
+    <li>
+      <a href="http://blogs.technet.com/serverandtools">Server and Tools Blogs</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/solutionaccelerators">Solution Accelerators</a>
+    </li>
+    <li>
+      <a href="http://blogs.technet.com/">TechNet Blogs</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayout">
+  <h5>&nbsp;</h5>
+  <ul>
+    <li>
+      <a href="http://technet.microsoft.com/cc543196">TechNet Flash Newsletter</a>
+    </li>
+    <li>
+      <a href="http://gallery.technet.microsoft.com/">TechNet Gallery</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/library/default.aspx">TechNet Library</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/magazine">TechNet Magazine</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/subscriptions">TechNet Subscriptions</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/video">TechNet Video</a>
+    </li>
+    <li>
+      <a href="http://social.technet.microsoft.com/wiki">TechNet Wiki</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/sysinternals">Windows Sysinternals</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/virtuallabs">Virtual Labs</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayoutSplashGuard"></div><div class="menuContainerLayout">
+  <h5>Solutions</h5>
+  <ul>
+    <li>
+      <a href="http://technet.microsoft.com/bi">Business Intelligence</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/network">Networking</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/cloud/private-cloud">Private Cloud</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/security">Security</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/virtualization">Virtualization</a>
+    </li>
+  </ul>
+</div>
+                    </div>
+                    <div data-value="hh371326" class="bladeItemMenu" style="display: none;">
+                        <div class="menuContainerLayout">
+  <h5>Updates</h5>
+  <ul>
+    <li>
+      <a href="http://support.microsoft.com/default.aspx?id=fh;en-us;sp&fr=0&sd=gn&ln=en-us&ct=sd&se=nona">Service Packs</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/security/bulletin">Security Bulletins</a>
+    </li>
+    <li>
+      <a href="http://fe1.update.microsoft.com/microsoftupdate/v6/vistadefault.aspx?ln=en-US">Microsoft Update</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayoutSplashGuard"></div><div class="menuContainerLayout">
+  <h5>Trials</h5>
+  <ul>
+    <li>
+      <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200127473">Windows Server 2012</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200138112">System Center 2012</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200139618">Microsoft SQL Server 2012</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200138107">Windows 8 Enterprise</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/en-us/evalcenter" title="See all trials">See all trials »</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayoutSplashGuard"></div><div class="menuContainerLayout">
+  <h5>Related Sites</h5>
+  <ul>
+    <li>
+      <a href="http://www.microsoft.com/downloads/search.aspx">Microsoft Download Center</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/evalcenter">TechNet Evaluation Center</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/download/driver.aspx?q=driver">Drivers</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/download/compatibility.aspx?q=compatibility">Compatability &amp; Converters</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/sysinternals">Windows Sysinternals</a>
+    </li>
+    <li>
+      <a href="http://gallery.technet.microsoft.com/">TechNet Gallery</a>
+    </li>
+  </ul>
+</div>
+                    </div>
+                    <div data-value="jj837158" class="bladeItemMenu" style="display: none;">
+                        <div class="menuContainerLayout">
+  <h5>Training</h5>
+  <ul>
+    <li>
+      <a href="http://learning.microsoft.com/Manager/BrowseCatalog.aspx?browse=PT">Training Catalog</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/learning/en/us/classlocator.aspx">Class Locator</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200155695">Microsoft Virtual Academy</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200155696">Free Windows Server 2012 courses</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/learning/en/us/training/sql-server.aspx">SQL Server training</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/learning/en/us/training/format-online.aspx">e-Learning overview</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayoutSplashGuard"></div><div class="menuContainerLayout">
+  <h5>Certifications</h5>
+  <ul>
+    <li>
+      <a href="http://www.microsoft.com/learning/en/us/certification/cert-overview.aspx">Certification overview</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/learning/en/us/certification/cert-windowsserver.aspx">Windows Server Certification (MCSE)</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/learning/en/us/certification/cert-private-cloud.aspx">Private Cloud Certification (MCSE)</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/learning/en/us/certification/cert-sql-server.aspx">SQL Server Certification (MCSE)</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayoutSplashGuard"></div><div class="menuContainerLayout">
+  <h5>Other resources</h5>
+  <ul>
+    <li>
+      <a href="http://www.technetevents.com/">TechNet Events</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/learning/en/us/offers/secondshot.aspx">Second shot for certification</a>
+    </li>
+    <li>
+      <a href="http://borntolearn.mslearn.net/btl/b/default.aspx">Born To Learn blog</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200155694">IT Camps</a>
+    </li>
+  </ul>
+</div>
+                    </div>
+                    <div data-value="hh371327" class="bladeItemMenu" style="display: none;">
+                        <div class="menuContainerLayout">
+  <h5>TechNet Support</h5>
+  <ul>
+    <li>
+      <a href="http://technet.microsoft.com/exchange/ff396001.aspx">Exchange Server 2010</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/forefront/ff404202">Forefront Products</a>
+    </li>
+    <li>
+      <a href="http://support.microsoft.com/ph/807#tab0">Internet Explorer 9</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/office/ee263916">Office 2010</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/sharepoint/ee410533">SharePoint Server 2010</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/sqlserver/ff472320">SQL Server 2008 R2</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayout">
+  <h5>&nbsp;</h5>
+  <ul>
+    <li>
+      <a href="http://technet.microsoft.com/windows/bb187457">Windows 7</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/systemcenter/cc511006">System Center</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/windowsserver/hh553005" title="Windows Server 2012">Windows Server 2012</a>
+    </li>
+    <li>
+      <a href="http://technet.microsoft.com/windowsserver/bb512923">Windows Server 2008 R2</a>
+    </li>
+    <li>
+      <a href="http://social.technet.microsoft.com/Forums/categories">Ask a question in TechNet Forums</a>
+    </li>
+  </ul>
+</div><div class="menuContainerLayoutSplashGuard"></div><div class="menuContainerLayout">
+  <h5>Microsoft Support</h5>
+  <ul>
+    <li>
+      <a href="http://support.microsoft.com/">Microsoft Support</a>
+    </li>
+    <li>
+      <a href="http://support.microsoft.com/fixit">Microsoft Fix It</a>
+    </li>
+    <li>
+      <a href="http://www.microsoft.com/services/microsoftservices/busi.mspx">Microsoft Premier and Essentials Support Options</a>
+    </li>
+  </ul>
+</div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+<div id="tn_isd_header" class="technet">
+    <div class="upperBand">
+        <a href="http://technet.microsoft.com/en-us/" title="Microsoft TechNet"><img src="./Chapter 10 - Working with Performance Counters_files/BrandLogoTechNet.png" alt="Microsoft TechNet"></a>
+        <div class="searchBox">
+            
+<form id="SearchForm" action="http://social.technet.microsoft.com/search/en-us" method="get" style="margin: 0; padding: 0;" onsubmit="return checkSearchBox()">
+<div class="searchBoxContainer" style="">
+  <table class="searchBox" cellpadding="0" cellspacing="0" border="0">
+    <tbody><tr>
+      <td class="searchTextBoxTd">
+        <input id="SearchInput" type="text" maxlength="200" class="searchTextBox" name="query">
+        
+      </td>
+      <td class="searchButtonTd">
+        <a href="javascript:void(0)" class="clip29x29" style="display: block; overflow: hidden; position: relative;           padding: 0; margin: 0;" onclick="javascript:if(document.getElementById(&#39;SearchInput&#39;).value == &#39;Search TechNet with Bing&#39;)document.getElementById(&#39;SearchInput&#39;).value=&#39;&#39;; document.getElementById(&#39;SearchForm&#39;).submit();">
+          <img src="./Chapter 10 - Working with Performance Counters_files/ImageSprite.png" style="position: relative;" title="Search " class="search_icon_technet" alt="Search"></a>
+      </td>
+    </tr>
+  </tbody></table>
+</div>
+</form>
+
+
+
+        </div>
+        <div class="upperRight">
+            <div>
+                <a class="locale" href="http://technet.microsoft.com/en-us/library/preferences/locale/?returnurl=%252fen-us%252flibrary%252fbb734903.aspx" title="Россия - Pусский">Россия - Pусский</a>
+                <a class="signIn" href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=11&ct=1352272342&rver=6.0.5276.0&wp=MCLBI&wlcxt=technet%24technet%24technet&wreply=http%3a%2f%2ftechnet.microsoft.com%2fen-us%2flibrary%2fbb734903.aspx&lc=1033&id=254354&mkt=en-US" title="Sign in">Sign in</a>
+            </div>
+            
+        </div>
+    </div>
+    <div class="lowerBand">
+        
+        <div class="tabContainer">
+            <div class="tab">
+                <a href="http://technet.microsoft.com/en-us/" title="Home" class="">Home</a>
+            </div>
+        </div>
+
+        <div class="tabContainer">
+            <div class="tabSelected tabSelectedImage">
+                <a href="http://technet.microsoft.com/library/default.aspx" title="Library" class="">Library</a>
+            </div>
+        </div>
+
+        <div class="tabContainer">
+            <div class="tab">
+                <a href="http://social.technet.microsoft.com/wiki" title="Wiki" class="">Wiki</a>
+            </div>
+        </div>
+
+        <div class="tabContainer">
+            <div class="tab">
+                <a href="http://technet.microsoft.com/en-us/bb291022" title="Learn" class="">Learn</a>
+            </div>
+        </div>
+
+        <div class="tabContainer">
+            <div class="tab">
+                <a href="http://gallery.technet.microsoft.com/" title="Gallery" class="">Gallery</a>
+            </div>
+        </div>
+
+        <div class="tabContainer">
+            <div class="tab">
+                <a href="http://technet.microsoft.com/en-us/bb403698" title="Downloads" class="">Downloads</a>
+            </div>
+        </div>
+
+        <div class="tabContainer">
+            <div class="tab">
+                <a href="http://technet.microsoft.com/en-us/ms772425" title="Support" class="">Support</a>
+            </div>
+        </div>
+
+        <div class="tabContainer">
+            <div class="tab">
+                <a href="http://social.technet.microsoft.com/Forums/en-us/categories/" title="Forums" class="">Forums</a>
+            </div>
+        </div>
+
+        <div class="tabContainer">
+            <div class="tab">
+                <a href="http://blogs.technet.com/" title="Blogs" class="">Blogs</a>
+            </div>
+        </div>
+
+            <div class="menus">
+                <a id="isd_settings" href="http://technet.microsoft.com/en-us/library/preferences/experience/?returnurl=%252fen-us%252flibrary%252fbb734903.aspx" title="Preferences" rel="nofollow">
+                <div class="clip26x23"><img src="./Chapter 10 - Working with Performance Counters_files/ImageSprite.png" alt="" class="isd_settings">
+                </div></a>
+                <a id="isd_print" href="http://technet.microsoft.com/en-us/library/bb734903(d=printer).aspx" title="Print/Export" rel="nofollow">
+                <div class="clip38x23">
+                <img src="./Chapter 10 - Working with Performance Counters_files/ImageSprite.png" alt="" class="isd_print_arrow">
+                </div></a>
+                
+                    <div id="isd_print_menu" class="isd_menu">
+                        <a href="http://technet.microsoft.com/en-us/library/bb734903(d=printer).aspx">Print This Topic</a>
+                        <a href="http://technet.microsoft.com/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fbb734903.aspx">Print Multiple Topics</a>
+                    </div>
+                
+            </div>
+        
+    </div>
+</div>
+
+    </div>
+    
+<div id="exportTiny" class="exportTinyContent" style="display: none;">
+  <a id="printThisTopicLink" href="http://technet.microsoft.com/en-us/library/bb734903(d=printer).aspx" title="Print This Topic">
+    Print This Topic</a>
+  <br>
+  <a id="printMultipleTopicsLink" href="http://technet.microsoft.com/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fbb734903.aspx" title="Print Multiple Topics">
+    Print Multiple Topics</a>
+</div>
+
+
+
+    <div class="contentPlaceHolder">
+        
+    
+  <div class="navigation" id="Navigation" style="width:280px;padding-bottom:96px;">
+    <div class="searchcontainer">
+      
+    </div>
+    <div class="navcontainer">
+      
+<div class="nav">
+
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+                <a class="toc_collapsed" href="http://technet.microsoft.com/en-us/library/bb734903.aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/en-us/library/aa991542.aspx" id="bb126093_TechNet.10_en-us" title="TechNet Library Home">TechNet Library Home</a>
+            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+                <a class="toc_collapsed" href="http://technet.microsoft.com/en-us/library/bb734903.aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/en-us/library/cc440477.aspx" id="cc440477_TechNet.10_en-us" title="Products and Technologies">Products and Technologies</a>
+            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+                <a class="toc_collapsed" href="http://technet.microsoft.com/en-us/library/bb734903.aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/en-us/library/bb545877.aspx" id="dd439414_TechNet.10_en-us" title="Application Center 2000">Application Center 2000</a>
+            </div>
+            <div class="toclevel1" data-toclevel="1" style="padding-left: 13px; " data-childrenloaded="true">
+                <a class="toc_expanded" href="http://technet.microsoft.com/en-us/library/bb734903.aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/en-us/library/dd439412.aspx" id="dd439412_TechNet.10_en-us" title="Resource Kit">Resource Kit</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734921.aspx" title="Table of Contents">Table of Contents</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734915.aspx" title="Overview">Overview</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734916.aspx" title="Preface and Acknowledgments">Preface and Acknowledgments</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734902.aspx" title="Chapter 1 - Scaling Business Web Sites with Application Center">Chapter 1 - Scaling Business Web Sites with Application Center</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734907.aspx" title="Chapter 2 - Feature Overview">Chapter 2 - Feature Overview</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734908.aspx" title="Chapter 3 - The Application Center Architecture">Chapter 3 - The Application Center Architecture</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734909.aspx" title="Chapter 4 - Cluster Services">Chapter 4 - Cluster Services</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734910.aspx" title="Chapter 5 - Load Balancing">Chapter 5 - Load Balancing</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734911.aspx" title="Chapter 6 - Synchronization and Deployment">Chapter 6 - Synchronization and Deployment</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734912.aspx" title="Chapter 7 - Monitoring">Chapter 7 - Monitoring</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734913.aspx" title="Chapter 8 - Creating Clusters and Deploying Applications">Chapter 8 - Creating Clusters and Deploying Applications</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734914.aspx" title="Chapter 9 - Working with Monitors and Events">Chapter 9 - Working with Monitors and Events</a>
+            </div>
+            <div class="toclevel2 current" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734903.aspx" title="Chapter 10 - Working with Performance Counters">Chapter 10 - Working with Performance Counters</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734904.aspx" title="Chapter 11 - Working with the Command-Line Tool and Scripts">Chapter 11 - Working with the Command-Line Tool and Scripts</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734905.aspx" title="Chapter 12 - Security: For Administrators and Developers">Chapter 12 - Security: For Administrators and Developers</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734906.aspx" title="Chapter 13 - Third-Party Load Balancer Support">Chapter 13 - Third-Party Load Balancer Support</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734919.aspx" title="Chapter 14: Application Center Interoperability">Chapter 14: Application Center Interoperability</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734895.aspx" title="Appendix A - A Blueprint for Building Web Sites Using the Microsoft Windows DNA Platform">Appendix A - A Blueprint for Building Web Sites Using the Microsoft Windows DNA Platform</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734896.aspx" title="Appendix B - Network Load Balancing Technical Overview">Appendix B - Network Load Balancing Technical Overview</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734897.aspx" title="Appendix C - The Art and Science of Web Server Tuning with Internet Information Services 5.0">Appendix C - The Art and Science of Web Server Tuning with Internet Information Services 5.0</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734898.aspx" title="Appendix D - Application Center Status Events">Appendix D - Application Center Status Events</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734899.aspx" title="Appendix E - Sample Performance Charts">Appendix E - Sample Performance Charts</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734900.aspx" title="Appendix F - Resource Kit Software Tools">Appendix F - Resource Kit Software Tools</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734901.aspx" title="Appendix G - Managing IIS IP Bindings">Appendix G - Managing IIS IP Bindings</a>
+            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+                <span class="toc_empty"></span><a href="http://technet.microsoft.com/en-us/library/bb734917.aspx" title="CD-ROM System Requirements">CD-ROM System Requirements</a>
+            </div>
+</div>    
+
+
+    
+
+    
+    
+</div>
+
+
+
+
+    </div>
+    
+  </div>
+  <div id="tocResizeContainer" style="visibility: visible; ">
+  <a href="javascript:void(0)" class="tocResize" id="TocResize" style="left:280px">
+    <img id="ResizeImageIncrease" class="cl_nav_resize_open" src="./Chapter 10 - Working with Performance Counters_files/ImageSprite.png" title="Expand" alt="Expand">
+      <img id="ResizeImageReset" class="cl_nav_resize_close" src="./Chapter 10 - Working with Performance Counters_files/ImageSprite.png" style="display:none" title="Minimize" alt="Minimize">
+  </a>
+  </div>
+  <div class="content">
+    
+    
+    <div class="topicContainer">
+        
+    
+    
+
+    <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: none;"></div>
+
+    
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">
+Chapter 10 - Working with Performance Counters
+</h1><div id="ratingCounter" style="display: block; ">
+        <span id="rcA" class="ratingText">
+            14 out of 22 rated this helpful <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://technet.microsoft.com/en-us/library/bb734903.aspx#feedback" title="Rate this topic">Rate this topic</a>
+            
+        </span>
+    </div>
+  
+  <div id="mainSection">
+<div id="mainBody">
+<div>
+<p>This chapter focuses on using the Microsoft Application Center 2000 (Application Center) performance monitoring feature; however, because performance monitoring and capacity planning are such complex and inter-related topics, it was necessary to provide additional background information. As a result, this chapter is divided into four major parts that: </p>
+<ul>
+<li>
+<p>Provide an overview of performance tuning and capacity planning.&nbsp;</p>
+</li>
+<li>
+<p>Present high-level guidelines for performance testing and tuning.&nbsp;</p>
+</li>
+<li>
+<p>Illustrate how to work with the default Application Center performance counters and create new ones.&nbsp;</p>
+</li>
+<li>
+<p>Provide performance-monitoring examples by using different cluster topologies.&nbsp;</p>
+</li>
+</ul>
+<p>One dictionary defines performance as "a manner of functioning: the manner in which something or somebody functions, operates, or behaves," which nicely describes what computer system performance refers to. Unfortunately, because there are so many variables, monitoring and tuning performance isn't as easy as defining it. </p>
+<p>A colleague once described a computer system as a series of bottlenecks in motion. In order to achieve high levels of performance on a cluster, you have to be able to identify and resolve bottlenecks—which are not isolated, but are inter-related and constantly shifting depending on what the individual cluster members and their applications are doing at any given time. </p>
+<p>There are numerous elements to consider when dealing with performance, but whether you're dealing with a single server or several servers, you can divide these elements into the following broad categories: </p>
+<ul>
+<li>
+<p>The hardware&nbsp;</p>
+</li>
+<li>
+<p>The applications (including Microsoft Internet Information Services 5.0 [IIS] and Active Server Pages [ASP] runtime)&nbsp;</p>
+</li>
+<li>
+<p>The database&nbsp;</p>
+</li>
+<li>
+<p>The network&nbsp;</p>
+</li>
+<li>
+<p>The operating system (as manifested through the processor, memory, and disks)&nbsp;</p>
+</li>
+</ul>
+<p>These are the parts of a cluster environment that you have to deal with when trying to achieve and maintain high levels of performance on an Application Center cluster. </p>
+<p>
+<strong>Note </strong>Although the focus of this chapter isn't on system health, remember that this element can influence the overall performance picture, and in many cases, poor performance can be a good indicator of a failing system component. </p>
+<p>Before dealing with the specifics of performance monitoring and tuning, let's examine the different aspects of performance, including an overview of performance management and the different perspectives on performance and performance goals that you have to consider when undertaking performance tuning on a system. </p>
+<h5>On This Page</h5>
+<p>
+<a href="./Chapter 10 - Working with Performance Counters_files/Chapter 10 - Working with Performance Counters.htm">
+
+</a>
+<a href="./Chapter 10 - Working with Performance Counters_files/Chapter 10 - Working with Performance Counters.htm">Performance Management </a>
+<br>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EHAA">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EHAA">An Overview of Performance Tuning </a>
+<br>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EGAA">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EGAA">An Overview of Capacity Planning </a>
+<br>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EFAA">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EFAA">Testing and Tuning the Infrastructure </a>
+<br>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EEAA">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EEAA">Testing and Tuning Applications </a>
+<br>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EDAA">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EDAA">The Web Application Stress Tool </a>
+<br>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#ECAA">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#ECAA">Performance Counters </a>
+<br>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EBAA">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EBAA">Performance Monitoring Samples </a>
+<br>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EAAA">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#EAAA">Resources </a>
+<br>
+</p>
+<h3 id="EIAA">Performance Management </h3>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>When dealing with performance management, we're talking about the continuous process of evaluating a server to determine whether or not it can deliver the level of performance that's required, which is to say, the server's ability to handle a certain load of concurrent users. Performance management is closed linked to capacity planning; the difference is that performance management involves tuning the current system so that it can perform better, thereby enabling it to support more users. Capacity planning, on the other hand, focuses on how many users a site can support and how to scale the site so it can support more users. </p>
+<p>While confronting the myriad of elements that make up a production system, you also have to balance the goals and priorities of two viewpoints—that of the user and that of the administrator. Although it often seems like users and administrators have conflicting views, both want the same things from a system. They want the system to provide good performance, they want the applications to work, and they want the site to be up all the time. It's really a matter of perspective; users and administrators simply have slightly different ways of viewing system goals and interpreting performance. </p>
+<h4>The User's Perspective</h4>
+<p>For most users, performance equates to speed—the <em>perceived</em> response time of the system they're using. When they activate a hyperlink and the requested page is retrieved and displayed quickly—typically in less than 10 seconds—their perception of performance is favorable. (It's interesting to note that it's not uncommon for a user to think that a page takes longer to retrieve and display than it actually does.) </p>
+<p>From a user's perspective, the definition of performance and the primary goal of performance tuning is the same—make it fast. This speed-based viewpoint encompasses the following: </p>
+<ul>
+<li>
+<p>Initialization&nbsp;</p>
+</li>
+<li>
+<p>Shut down&nbsp;</p>
+</li>
+<li>
+<p>Page retrieval and rendering&nbsp;</p>
+</li>
+<li>
+<p>Reasonable time-outs&nbsp;</p>
+</li>
+</ul>
+<h4>The Administrator's Perspective</h4>
+<p>From an administrator's viewpoint, performance is a measure of how system resources are utilized by all the running programs. The scope of resource usage ranges from the lowest level program (drivers, for example) up to and including the applications that are hosted on a server. </p>
+<p>In terms of performance tuning, the administrator's primary goal is to make the system satisfy client requests quickly and without errors or interrupts. His secondary tuning goals are: </p>
+<ul>
+<li>
+<p>Conserving bandwidth&nbsp;</p>
+</li>
+<li>
+<p>Conserving CPU resources and RAM utilization&nbsp;</p>
+</li>
+</ul>
+<p>
+<strong>Note </strong>An indirect goal is eliminating or reducing Help Desk calls, a goal that is usually achieved by meeting the direct goals. </p>
+<p>Unlike the user, who deals primarily with perception, the administrator can quantify resource utilization through the collection, observation, and analysis of performance data (see Figure 10.1 on page 327). </p>
+<p>You can use performance data to: </p>
+<ul>
+<li>
+<p>Observe changes and trends in resource usage and workload distribution.&nbsp;</p>
+</li>
+<li>
+<p>Quantify the relationship between the workload and its effect on system resources.&nbsp;</p>
+</li>
+<li>
+<p>Test configuration changes or tuning efforts by monitoring the results.&nbsp;</p>
+</li>
+</ul>
+<p>Regardless of the perspective you take, you have to approach tuning systematically and employ a methodology for implementing and testing system configuration changes. </p>
+<p>
+<strong>The business perspective</strong>&nbsp;</p>
+<p>The business perspective also plays a significant role in performance management. In this context, someone has to do determine how much hardware is required, how to make provisions for peak loads, how to balance out spikes with low overall load, and how to determine or satisfy service-level agreements. </p>
+<p>It's often necessary to make price and performance trade-offs—it may be too expensive to have enough servers for maintaining low processor utilization at all times, so low average utilization with spikes becomes acceptable. </p>
+<div>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">Top of page</a>
+<br>
+</div>
+<h3 id="EHAA">An Overview of Performance Tuning </h3>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>Performance tuning is the main activity associated with performance management. Reduced down to its most basic level, tuning consists of finding and eliminating bottlenecks—a condition that occurs, and is revealed, when a piece of hardware or software in a server approaches the limits of its capacity. </p>
+<p>Before starting the performance tuning cycle illustrated in Figure 10.1, you have to do some preparatory work that establishes the framework for ongoing performance tuning activities. You should: </p>
+<ul>
+<li>
+<p>
+<strong>Identify constraints</strong>—A site's business case determines priorities, which in turn establish boundaries. Constraints, such as maintainability and budget limits, are factors that cannot be altered in search of higher performance. You have to focus performance work on factors that are not constrained.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Specify the load</strong>—This involves determining what services the site's clients require and the level of demand for those services. The most common metrics for specifying load are the number of clients, client think time (the delay between when a client receives one reply and when it submits the next request), and load distribution (steady or fluctuating, average, and peak load).&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Set performance goals</strong>—Performance goals have to be explicit, which involves identifying the metrics that will be used for tuning as well as their corresponding benchmark values. Total system throughput and response time are two common metrics that are used to measure performance. After identifying the performance metrics, you have to establish quantifiable and reasonable benchmark values for each one.&nbsp;</p>
+</li>
+</ul>
+<p>
+<strong>Note </strong>Because performance and capacity are so closely related, the constraints, load, and goals that you identify are also applicable to capacity planning </p>
+<p>After establishing the boundaries and expectations for performance tuning, you can begin the tuning cycle, which is an iterative series of controlled performance experiments. </p>
+<h4>The Tuning Cycle</h4>
+<p>The four phases of the tuning cycle shown in Figure 10.1 are repeated until you achieve the performance goals that you established prior to starting the tuning process. Let's examine each phase, starting with Collecting. </p>
+<p>
+<img id="f10uj01" alt="Bb734903.f10uj01(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC20873.gif" title="Bb734903.f10uj01(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.1 The performance tuning cycle</strong>&nbsp;</p>
+<h5>Collecting</h5>
+<p>The Collecting phase is the starting point of any tuning exercise. During this phase you're simply gathering data with the collection of performance counters that you've chosen for a specific part of the system. These counters could be for the network, the server, or the back-end database. </p>
+<p>Regardless of what part of the system you're tuning, you require a baseline against which to measure performance changes. You need establish a pattern of system behavior when the system is idling as well as when specific tasks are executed (for example, adding a member to the cluster and synchronizing it to the controller). Therefore, your first data-gathering pass is used to establish a baseline set of values for the system's behavior. The baseline establishes the typical counter values that you'd expect to see when the system is behaving satisfactorily. </p>
+<p>
+<strong>Note </strong>Baseline performance is a subjective standard—you have to set a baseline that's appropriate for your work environment and that best reflects your system's workload and service demands. </p>
+<p>Once you've established your baseline, you can apply load to the system by using a tool such as Web Application Stress (WAS) to simulate user load. </p>
+<p>
+<strong>Note </strong>Test scripts should try to mimic typical client usage patterns on your system and will use the load factors that you established earlier: number of concurrent connections, think time, and load distribution. </p>
+<h5>Analyzing</h5>
+<p>After you've collected the performance data that you require for tuning the part of the system that you're working on, you need to analyze the data to determine where the bottleneck is. Remember, a performance number is only an indicator—it doesn't necessarily identify the actual bottleneck because a performance problem can be traced back to multiple sources. It's also not uncommon for problems in one system component to be the result of problems in another component (a memory shortage is the best example of this; it's indicated by increased disk and processor use). </p>
+<p>The following points, taken from the <em>Microsoft Windows 2000 Resource Kit</em>, provide guidelines for interpreting counter values and eliminating false or misleading data that might cause you to set inappropriate target values for tuning. </p>
+<ul>
+<li>
+<p>
+<strong>Monitoring processes of the same name</strong>—Watch for unusually large values for one instance and not the other. Sometimes, the System Monitor misrepresents data for separate instances of processes of the same name by reporting the combined values of the instances as the value of a single instance. You can work around this by tracking processes by the process identifier.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Monitoring several threads</strong>—When you are monitoring several threads and one of them stops, the data for one thread might appear to be reported for another. This is because of the way threads are numbered. You can get around this by including the thread identifiers of the process's threads in your log or display. Use the <strong>Thread\Thread ID</strong> counter for this purpose.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Intermittent spikes in data values</strong>—Don't give too much weight to occasional spikes in data. These might be due to the startup of a process and are not an accurate reflection of counter values for that process over time. Counters that average, in particular, can cause the effect of spikes to linger over time.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Monitoring over an extended period of time</strong>—We recommend using graphs instead of reports or histograms because the latter views only show the last values and averages. As a result, you might not get an accurate picture of values when you're looking for spikes.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Excluding start-up events</strong>—Unless you have a specific reason for including start-up events in your data, exclude these events because the temporarily high values they produce tend to skew overall performance results.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Zero values or missing data</strong>—Investigate all occurrences of zero values or missing data. These can hamper your ability to establish a meaningful baseline.&nbsp;</p>
+</li>
+</ul>
+<h5>Configuring</h5>
+<p>After you've collected your data and completed the analysis of the results, you can determine which part of the system is the best candidate for a configuration change and implement this change. </p>
+<p>The cardinal rule for implementing changes is <strong>only implement one configuration change at a time</strong>. A problem that appears to be related to a single component might be the result of bottlenecks involving several components. For this reason it's important to address problems individually. If you make multiple changes simultaneously, it may be impossible to accurately assess the impact of each change. </p>
+<h5>Testing</h5>
+<p>After implementing a configuration change, you'll have to complete the appropriate level of testing to determine the impact of the change on the system that you're tuning. At this point, it's a matter of determining whether or not the change: </p>
+<ul>
+<li>
+<p>Improved performance. Did the change improve performance, and if so, by how much?&nbsp;</p>
+</li>
+<li>
+<p>Degraded performance. Did the change cause a bottleneck somewhere else?&nbsp;</p>
+</li>
+<li>
+<p>Had no impact on performance. Did the change have any noticeable impact at all on performance?&nbsp;</p>
+</li>
+</ul>
+<p>If you're lucky and performance improves to the level you anticipated, you can quit. If not, you have to step through the tuning cycle again. </p>
+<p>
+<strong>Testing do's</strong>&nbsp;</p>
+<ul>
+<li>
+<p>Check the correctness and performance of the application that you're using for testing by looking for memory leaks and inordinate delays in response to client requests.&nbsp;</p>
+</li>
+<li>
+<p>Ensure that all the tests are working correctly.&nbsp;</p>
+</li>
+<li>
+<p>Make sure that all the tests can be repeated by using the same transaction mix and the same clients generating the same load. (See "The Web Application Stress Tool," later in this chapter.)&nbsp;</p>
+</li>
+<li>
+<p>Document changes and results.&nbsp;</p>
+</li>
+</ul>
+<p>
+<strong>Tip </strong>You can obtain the monitoring results of your testing from monitoring log files—which can be exported to Microsoft Excel—and the Event log. </p>
+<p>Before—and during—performance tuning, we recommend that you use the following two resources for performance monitoring and tuning: the <em>Microsoft Windows 2000 Server Resource Kit</em> and Appendix C, "The Art and Science of Web Server Tuning with Internet Information Services 5.0." These two resources provide most of the information that you will need to successfully tune your network, servers, and Web servers. </p>
+<h5>Microsoft Windows 2000 Server Resource Kit: Server Operations Guide</h5>
+<p>The performance monitoring section of the <em>Server Operations Guide</em> contains the following topics and subtopics: </p>
+<ul>
+<li>
+<p>"<strong>Overview of Performance Monitoring</strong>": </p>
+<p>"Performance Monitoring Concepts" </p>
+<p>"Monitoring Tools"&nbsp;</p>
+<p>"Starting Your Monitoring Routine"&nbsp;</p>
+<p>"Analyzing Monitoring Results"&nbsp;</p>
+<p>"Investigating Bottlenecks"&nbsp;</p>
+<p>"Troubleshooting Problems with Performance Tools"&nbsp;</p>
+<p>"Specific Monitoring Scenarios"&nbsp;</p>
+<p>"Monitoring Legacy Applications"&nbsp;</p>
+<p>"Integrating the System Monitor Control into Office and Other Applications"&nbsp;</p>
+</li>
+<li>
+<p>"<strong>Evaluating Memory and Cache Usage</strong>":&nbsp;</p>
+<p>"Overview of Memory Monitoring"&nbsp;</p>
+<p>"Determining the Amount of Installed Memory"&nbsp;</p>
+<p>"Understanding Memory and the File System Cache"&nbsp;</p>
+<p>"Optimizing Your Memory Configuration"&nbsp;</p>
+<p>"Establishing a Baseline for Memory"&nbsp;</p>
+<p>"Investigating Memory Problems"&nbsp;</p>
+</li>
+<li>
+<p>"<strong>Analyzing Processor Activity</strong>":&nbsp;</p>
+<p>"Overview of Processor Monitoring and Analysis"&nbsp;</p>
+<p>"Establishing a Baseline for Processor Performance"&nbsp;</p>
+<p>"Recognizing a Processor Bottleneck"&nbsp;</p>
+<p>"Processes in a Bottleneck"&nbsp;</p>
+<p>"Threads in a Bottleneck"&nbsp;</p>
+<p>"Advanced Topic: Changing Thread Priority to Improve Performance"&nbsp;</p>
+<p>"Eliminating a Processor Bottleneck"&nbsp;</p>
+</li>
+<li>
+<p>"<strong>Examining and Tuning Disk Performance</strong>":&nbsp;</p>
+<p>"Disk Monitoring Concepts"&nbsp;</p>
+<p>"Configuring the Disk and File System for Performance"&nbsp;</p>
+<p>"Working with Disk Counters"&nbsp;</p>
+<p>"Establishing a Baseline for Disk Usage"&nbsp;</p>
+<p>"Investigating Disk Performance Problems"&nbsp;</p>
+<p>"Resolving Disk Bottlenecks"&nbsp;</p>
+<p>"Evaluating Cache and Disk Usage by Applications"&nbsp;</p>
+</li>
+<li>
+<p>"<strong>Monitoring Network Performance</strong>":&nbsp;</p>
+<p>"Introduction to Network Performance Analysis"&nbsp;</p>
+<p>"Tools for Monitoring Network Performance"&nbsp;</p>
+<p>"Resolving Network Bottlenecks"&nbsp;</p>
+</li>
+<li>
+<p>"<strong>Measuring Multiprocessor Activity</strong>":&nbsp;</p>
+<p>"Overview of SMP Performance and Monitoring"&nbsp;</p>
+<p>"Monitoring Activity on Multiprocessor Systems"&nbsp;</p>
+<p>"Optimizing and Tuning Multiprocessor Installations"&nbsp;</p>
+<p>"Application Design and Multiprocessor Performance"&nbsp;</p>
+<p>"Network Load Balancing and Scaling"&nbsp;</p>
+</li>
+</ul>
+<h5>Appendix C, "The Art and Science of Web Server Tuning with Internet Information Services 5.0"</h5>
+<p>This white paper, written by George Reilly at Microsoft, is arguably the best single resource for tuning a server that's running IIS. This document covers the following topics and subtopics: </p>
+<ul>
+<li>
+<p>"<strong>Why Tune Your Web Servers?"</strong>&nbsp;</p>
+</li>
+<li>
+<p>"<strong>What to Tune"</strong>&nbsp;</p>
+<p>"Monitoring Your Hardware"&nbsp;</p>
+<p>"Security"&nbsp;</p>
+<p>"Monitoring Your Web Applications"&nbsp;</p>
+<p>"Tuning Your Web Applications"&nbsp;</p>
+<p>"Tools to Monitor and Test Server Performance"&nbsp;</p>
+<p>"Features and Settings in Windows 2000 and IIS 5.0"&nbsp;</p>
+<p>"Tuning and Troubleshooting Suggestions"&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>"Testing, Piloting, and Going Live"</strong>&nbsp;</p>
+</li>
+</ul>
+<p>This white paper also provides a wealth of information, such as optimal IIS metabase and registry settings, Windows 2000 optimization tips, and ASP caching. Because this document is updated on a regular basis, you should check for the most recent version at <a href="http://www.microsoft.com/technet/iis/">http://www.microsoft.com/technet/iis/</a>. </p>
+<div>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">Top of page</a>
+<br>
+</div>
+<h3 id="EGAA">An Overview of Capacity Planning </h3>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>In order to realize the full potential of a site, you have to satisfy the demands of your users, which typically consist of quality of service, quality of content, and speedy access to the site's content and services. (The latter is, for most of your users, the key contributing factor to a positive user experience.) Capacity planning is the process of determining the most cost efficient method of increasing a Web site's performance and scalability, while at the same time predicting the point at which a resource will cause a bottleneck on the Web site. </p>
+<p>The starting point for capacity planning is determining a site's capacity, which is determined by: </p>
+<ul>
+<li>
+<p>The number of users it can handle before performance falls off&nbsp;</p>
+</li>
+<li>
+<p>The server's ability to handle increased load, either due to an increased number of users or increased content complexity&nbsp;</p>
+</li>
+<li>
+<p>The nature of the site's content, which is to say, the complexity of its applications&nbsp;</p>
+</li>
+</ul>
+<p>
+<strong>Note </strong>Capacity is influenced indirectly by performance; a well-tuned site can increase capacity by making better use of existing resources and, in some cases, free up resources. At some point, regardless of how well tuned your site is, the site cannot handle more traffic without degrading performance. This is the point at which you either have to scale up by upgrading/replacing the existing servers or scale out by increasing the size of your cluster. </p>
+<p>Ideally, you will have done some capacity planning that establishes acceptable performance benchmarks and resource usage limits, and you will have either scaled or have a plan in place to scale your system before performance degrades. </p>
+<p>The key factors for successful capacity planning are: </p>
+<ul>
+<li>
+<p>Understanding the nature of the site's content. Different types of content (for example, static HTML pages and ASP pages) have a different—and often dramatic—impact on system resources. Your capacity planning has to take into account how the existing content types affect capacity, as well as how a change in the content mix could affect resource usage.&nbsp;</p>
+</li>
+<li>
+<p>Understanding the site's users. You have to be able to understand site usage patterns in order to predict traffic growth and accommodate short-term usage spikes.&nbsp;</p>
+</li>
+</ul>
+<p>Once again, you have to gather baseline data before you can determine when and how to increase the capacity of your system. </p>
+<p>We recommend that you use the "Capacity Planning" white paper (Microsoft TechNet) as a guide for your capacity planning activities. The <em>Microsoft Internet Information Server Resource Kit</em> (Microsoft Press, 1998) for IIS 4.0 and the <em>Microsoft Information Services Resource Guide</em> (Microsoft Press, 2000) for IIS 5.0 also provide useful information about capacity planning for Web sites. </p>
+<h4>White Paper: "Capacity Planning"</h4>
+<p>The "Capacity Planning" white paper, produced by Microsoft Enterprise Services, is available from the TechNet Web site at the following URL: <a href="http://www.microsoft.com/technet/archive/itsolutions/ecommerce/default.mspx">http://www.microsoft.com/technet/archive/itsolutions/ecommerce/default.mspx</a>. </p>
+<p>"Capacity Planning" is a part of a series about applying Microsoft Enterprise Services frameworks to e-commerce solutions, and although it deals with capacity planning for sites running Windows 2000, IIS, Microsoft Site Server version 3.0, and Microsoft SQL Server version 7.0, it's methodology is not limited to these products or this particular business solution. </p>
+<p>The following topics and subtopics are covered in the white paper: </p>
+<ul>
+<li>
+<p>"<strong>Introduction to Capacity Planning</strong>"&nbsp;</p>
+<p>The introduction covers the why, when, and how of capacity planning and introduces the capacity planning equation: <em>Number of supported users</em>&nbsp;<strong>=</strong>&nbsp;<em>Hardware capacity/load on hardware per user</em>&nbsp;</p>
+</li>
+<li>
+<p>"<strong>Analyzing Your Site</strong>"&nbsp;</p>
+<p>"Dynamic Content Analysis"&nbsp;</p>
+<p>"Site Server 3.0 Commerce Edition"&nbsp;</p>
+<p>"Transaction Cost Analysis"&nbsp;</p>
+<p>"Predicting Site Traffic"&nbsp;</p>
+<p>"Analyzing a Typical User"&nbsp;</p>
+<p>"Acceptable Operation Parameters"&nbsp;</p>
+<p>"A Detailed Test Methodology"&nbsp;</p>
+<p>"User Cost Calculations" (for CPU, memory, disk, and network)&nbsp;</p>
+</li>
+<li>
+<p>"<strong>Deriving Site Capacity</strong>"&nbsp;</p>
+<p>In this section, you'll learn how to calculate hardware needs and how to plan site topology scalability—both vertically and horizontally.&nbsp;</p>
+</li>
+</ul>
+<div>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">Top of page</a>
+<br>
+</div>
+<h3 id="EFAA">Testing and Tuning the Infrastructure </h3>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>When monitoring and tuning your infrastructure, you have to remember that the various elements must be treated as a whole as well as individually. Before delving into these elements, it's necessary to understand the two primary performance metrics that are used for both performance tuning and capacity analysis—throughput and response time. </p>
+<h4>Throughput</h4>
+<p>Throughput is a measure that describes the rate at which a server can process requests. The higher the throughput is, the better your servers can accommodate spikes in the load. </p>
+<p>Typically, throughput is expressed in terms of requests per second or requests per day. Because of browser behavior (for example, a single HTML page request might be coupled with separate requests for imbedded images or frames), it can help to think of throughput in terms of page hits. </p>
+<p>
+<strong>Note </strong>Some administrators estimate throughput on their sites by dividing the number of clients by their think time, or the number of seconds that a user takes to read a page before clicking a link. Using this approach, if you had 1000 users with an average think time of 10 seconds, the throughput would be 100 requests per second. However, throughput is really a function of how quickly requests arrive at the server and how quickly the server can respond to these requests. </p>
+<p>The following factors can diminish throughput: </p>
+<ul>
+<li>
+<p>Bandwidth&nbsp;</p>
+</li>
+<li>
+<p>Page size&nbsp;</p>
+</li>
+<li>
+<p>Application complexity&nbsp;</p>
+</li>
+</ul>
+<p>You can measure throughput by using two performance counters that provide instant and historical values. For static HTML pages, you should use <strong>Web Service(_Total)\Get Requests/sec</strong>, and for ASP pages, you should use <strong>Active Server Pages\Requests/sec</strong>. After obtaining baseline data, you should apply stress to your server to determine how the increased load affects throughput and system resources. </p>
+<h5>Response Time</h5>
+<p>The two determining factors in response time are network latency, which is the time it takes a request to move through the server request queue, and request execution time. </p>
+<p>Network latency is the measure of how long a data packet takes to travel between two points. In today's network environments, there are many factors that have an impact on latency, including network congestion, link quality and bandwidth, the physical distance between the two points, and the hop count between the two points. </p>
+<p>Don't forget that network latency also affects the time it takes for a request to return from the server to the client. </p>
+<p>
+<strong>Note </strong>Even in a hypothetical network scenario with zero latency, a request can still spend time in a server queue (request queue time) before it is processed. The number of outstanding requests in the server queue determines this queue time; typically, server queue length is proportional to the server load. </p>
+<p>Two important response-time measures are the time-to-first-byte (TTFB) and the time-to-last-byte (TTLB) values. These values are provided whenever you run test scripts by using the WAS tool, which is documented in "The Web Application Stress Tool," later in this chapter. </p>
+<p>
+<strong>Note </strong>TTFB and TTLB are calculated by using the time that a page is first requested and the times that the first and last bytes of data are received on the client. </p>
+<p>The second factor in response time is request execution time. In addition to adding to response time, long execution times contribute to throughput degradation. Tuning your applications is the primary method for reducing execution time as well as throughput, which is covered in "Testing and Tuning Applications," later in this chapter. </p>
+<p>Now let's examine the counters that you can use for measuring network and server performance. </p>
+<h4>The Network and Server</h4>
+<p>The <em>Server Operations Guide</em> in the <em>Microsoft Windows 2000 Server Resource Kit </em>identifies numerous counters that you can use to monitor your system's hardware resources. The biggest challenge that you're going to face is determining which resources to monitor and which counters are appropriate for each resource. </p>
+<p>However, you can use the suggested thresholds for the selected counters in Table 10.1 as a guideline for evaluating server performance. If your system consistently reports these values, it's quite likely that a bottleneck exists on the system and you should take the appropriate steps—tune or upgrade the affected resource. </p>
+<p>Once you understand the baseline or average values for your site, you can then use Microsoft Health Monitor 2.1 to track deviations and alert you to potential problems. </p>
+<p>
+<strong>Table 10.1 Suggested Counter Thresholds for a Server</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Resource</p>
+</th><th>
+<p>Object/Counter</p>
+</th><th>
+<p>Threshold</p>
+</th><th>
+<p>Comments</p>
+</th></tr>
+<tr><td>
+<p>Disk</p>
+</td><td>
+<p>PhysicalDisk\% Disk Time</p>
+</td><td>
+<p>90%</p>
+</td><td>	
+						&nbsp;
+						</td></tr>
+<tr><td>
+<p>Disk</p>
+</td><td>
+<p>PhysicalDisk\ Disk Reads/sec, PhysicalDisk\Disk</p>
+</td><td>
+<p>Depends on manufacturer's specifications</p>
+</td><td>
+<p>Check the disk's specified transfer rate to verify that the logged rate doesn't exceed specifications.<strong>(1)</strong>
+</p>
+</td></tr>
+<tr><td>
+<p>Disk</p>
+</td><td>
+<p>PhysicalDisk\ Current Disk Queue Length</p>
+</td><td>
+<p>Number of spindles plus 2</p>
+</td><td>
+<p>This is an instantaneous counter; observe its value over several intervals. For an average over time, use PhysicalDisk\ Avg. Disk Queue Length</p>
+</td></tr>
+<tr><td>
+<p>Memory</p>
+</td><td>
+<p>Memory\Available Bytes</p>
+</td><td>
+<p>Less than 4 MB</p>
+</td><td>
+<p>Research memory usage, and then add memory, if needed.</p>
+</td></tr>
+<tr><td>
+<p>Memory</p>
+</td><td>
+<p>Memory\Pages/sec</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>Research paging activity, the activity that occurs when data is swapped out of memory and stored on disk when memory is low.</p>
+</td></tr>
+<tr><td>
+<p>Network</p>
+</td><td>
+<p>Network Segment\% Net utilization</p>
+</td><td>
+<p>Depends on network type</p>
+</td><td>
+<p>For Ethernet networks, the recommended threshold is 30 percent.</p>
+</td></tr>
+<tr><td>
+<p>Paging File</p>
+</td><td>
+<p>Paging File\% Usage</p>
+</td><td>
+<p>99%</p>
+</td><td>
+<p>Review this value in conjunction with Available Bytes and Pages/sec to understand paging activity on your system.</p>
+</td></tr>
+<tr><td>
+<p>Processor</p>
+</td><td>
+<p>Processor\% Processor Time</p>
+</td><td>
+<p>85%</p>
+</td><td>
+<p>Isolate the process that is using a high percentage of processor time. Upgrade to a faster processor, or install an additional processor.</p>
+</td></tr>
+<tr><td>
+<p>Processor</p>
+</td><td>
+<p>Processor\ Interrupts/sec</p>
+</td><td>
+<p>Depends on the processor</p>
+</td><td>
+<p>A dramatic increase in this counter with a corresponding increase in system activity indicates a hardware problem. Identify the network adapter that is causing the interrupts.</p>
+</td></tr>
+<tr><td>
+<p>Server</p>
+</td><td>
+<p>Server\Bytes Total/sec</p>
+</td><td>	
+						&nbsp;
+						</td><td>
+<p>If the sum Bytes for all servers is roughly equal to the maximum transfer rates for your network, you might need to segment the network.</p>
+</td></tr>
+<tr><td>
+<p>Server</p>
+</td><td>
+<p>Server\Work Item Shortages</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>If this value reaches the threshold, consider tuning <strong>InitWorkItems</strong> or<strong> MaxWorkItems</strong> in the registry.</p>
+</td></tr>
+<tr><td>
+<p>Server</p>
+</td><td>
+<p>Server\Pool Paged Peak</p>
+</td><td>
+<p>Amount of physical RAM</p>
+</td><td>
+<p>This value indicates the maximum paging file size and the amount of physical memory.</p>
+</td></tr>
+<tr><td>
+<p>Server</p>
+</td><td>
+<p>Server Work Queues\Queue Length</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>If this value reaches the threshold, there may be a processor bottleneck. This is an instantaneous counter; observe it over several intervals.</p>
+</td></tr>
+<tr><td>
+<p>Multiple Processors</p>
+</td><td>
+<p>System\Processor Queue Length</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>This is an instantaneous counter; observe it over several intervals.</p>
+</td></tr>
+</tbody></table>
+
+<p>
+<strong>(1)</strong> To monitor Logical and Physical Disk object counters, you have to activate them first by typing <strong>diskperf –yv</strong> at the command prompt. They will be enabled after you restart the system. </p>
+<p>
+<strong>Note </strong>Deciding whether or not server performance is acceptable is of course, highly subjective, and should reflect the baseline values that you establish for your own environment. </p>
+<h4>The Web Server</h4>
+<p>The main elements that you have to consider when tuning your Web servers are: </p>
+<ul>
+<li>
+<p>Memory&nbsp;</p>
+</li>
+<li>
+<p>Processor capacity&nbsp;</p>
+</li>
+<li>
+<p>Network capacity, latency, and bandwidth&nbsp;</p>
+</li>
+<li>
+<p>Disks&nbsp;</p>
+</li>
+<li>
+<p>Security features&nbsp;</p>
+</li>
+</ul>
+<p>The following sections, which provide guidelines for handling each of these elements, are taken from Appendix C, "The Art and Science of Web Server Tuning with Internet Information Services 5.0." </p>
+<p>
+<strong>Caution </strong>Remember, in keeping with the Application Center homogenous server philosophy, virtually all of the IIS configuration settings on the cluster controller are replicated to every cluster member. Therefore, you can't maintain unique IIS settings for each member. When you're tuning IIS on the controller, you have to take a holistic approach and consider what impact the Web server settings on the controller will have on the rest of the cluster members. </p>
+<h5>Memory</h5>
+<p>Monitor memory first to ensure that your server has enough before moving on to other components. Because the IIS file cache is set up to use up to one-half of the available memory by default, the more memory you have, the larger the cache can be—up to its limit of 4 GB. Lack of memory is the number one performance bottleneck on Web sites. </p>
+<p>
+<strong>Note </strong>Adding more memory doesn't guarantee that all your performance problems will be solved—you should also monitor how the IIS cache settings are affecting performance. </p>
+<p>Table 10.2 summarizes the key memory counters. </p>
+<p>
+<strong>Table 10.2 Memory Counters</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Counter(s)</p>
+</th><th>
+<p>Comments</p>
+</th></tr>
+<tr><td>
+<p>
+<strong>Memory:Available Bytes</strong>
+</p>
+</td><td>
+<p>Indicates available memory. At least 10 percent of memory should be available for peak use.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Memory:Page Faults/sec, Memory:Pages Input/sec, and Memory:Page Reads/sec</strong>
+</p>
+</td><td>
+<p>Use the first counter to determine the overall rate at which the system is handling hard and soft page faults. <strong>Memory:Pages Input/sec</strong>, which should be greater than or equal to <strong>Memory:Page Reads/sec</strong>, indicates the hard page fault rate. If these numbers are high, it's likely that too much memory is dedicated to the caches.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Memory: Cache Bytes, Internet Information Services Global: File Cache Hits %, Internet Information Services Global: File Cache Hits, and Internet Information Services Global: File Cache Flushes</strong>
+</p>
+</td><td>
+<p>Because IIS automatically trims the file system cache if it is running out of memory, you can use the <strong>File Cache Hits %</strong> counter trend to monitor memory availability. Use the second counter to see how well IIS is using the file cache. On a site made up mostly of static files, this value should be 80 percent or higher. You can compare <strong>Internet Information Services Global: File Cache Hits</strong> and <strong>Internet Information Services Global: File Cache Flushes </strong>to determine whether objects are flushed too quickly (more often than they need to be) or too slowly (thus, wasting memory).</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Page File Bytes: Total</strong>
+</p>
+</td><td>
+<p>Indicates the size of the paging file. The paging file on the system drive should be at least twice the size of physical memory. You can improve performance by striping the paging file across multiple disks.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Memory: Pool Paged Bytes, Memory:Pool Nonpaged Bytes, Process: Pool Paged Bytes:Inetinfo, Process: Pool Nonpaged Bytes:Inetinfo, Process: Pool Paged Bytes: dllhost#n, and Process: Pool Nonpaged Bytes: dllhost#n</strong>
+</p>
+</td><td>
+<p>Use these counters to monitor the pool space for all of the processes on the server as well as those used directly by IIS, either by the Inetinfo or Dllhost processes.</p>
+</td></tr>
+</tbody></table>
+
+<p>
+<strong>Tip </strong>Besides adding more memory, you can enhance memory performance by: </p>
+<ul>
+<li>
+<p>Improving data organization on the disk.&nbsp;</p>
+</li>
+<li>
+<p>Implementing disk mirroring or striping.&nbsp;</p>
+</li>
+<li>
+<p>Replacing Common Gateway Interface (CGI) applications with ISAPI or ASP applications.&nbsp;</p>
+</li>
+<li>
+<p>Increasing paging file size.&nbsp;</p>
+</li>
+<li>
+<p>Retiming the IIS file cache.&nbsp;</p>
+</li>
+<li>
+<p>Eliminating unnecessary features.&nbsp;</p>
+</li>
+<li>
+<p>Changing the balance of the file system cache to the IIS working set.&nbsp;</p>
+</li>
+</ul>
+<h5>Processor Capacity</h5>
+<p>Bottlenecks occur in the processor when one or more processes consume practically all of the processor time. This forces process threads that are ready to be executed to wait in a queue. Adding more hardware to overcome a processor bottleneck usually isn't effective and often makes the situation worse. In a site that hosts primarily static content, a two-processor computer is sufficient. With sites that host dynamic content, a four-processor system can handle the load. </p>
+<p>
+<strong>Tip </strong>Before implementing a hardware change, such as adding another processor, rule out memory problems and then monitor the processor activity. </p>
+<p>Table 10.3 summarizes the key processor counters. </p>
+<p>
+<strong>Table 10.3 Processor Counters</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Counter(s)</p>
+</th><th>
+<p>Comments</p>
+</th></tr>
+<tr><td>
+<p>
+<strong>System: Processor Queue Length</strong>
+</p>
+</td><td>
+<p>Use to flag a bottleneck. If this counter has a sustained value of two or more threads, there is likely a bottleneck.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Processor: %Processor Time</strong>
+</p>
+</td><td>
+<p>Use to flag a bottleneck. A bottleneck is indicated by a high <strong>Processor: %Processor Time </strong>value and values that are well below capacity for the network adapter and disk I/O.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Thread: Context Switch/ sec:Dllhost#n=&gt;Thread#, Thread: Context Switch/sec:Inetinfo=&gt; Thread#, and System: Context Switches/sec</strong>
+</p>
+</td><td>
+<p>Use to determine whether to increase the size of the thread pool.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Processor: Interrupts/sec and Processor: % DPC Time</strong>
+</p>
+</td><td>
+<p>Use to determine how much time the processor<strong>&nbsp;</strong>is spending on interrupts and DPCs. Client requests can be a major source of each type of load on the processor.</p>
+</td></tr>
+</tbody></table>
+
+<p>If the counters in Table 10.3 indicate a processor bottleneck, you have to determine if the current workload is significantly CPU-intensive. If it is, it's unlikely that a single system will be able to keep up with processing requests, even if it has multiple CPUs. The only remedy in this scenario is to add another server. </p>
+<h5>Network Capacity, Latency, and Bandwidth</h5>
+<p>The time it takes for client requests to be satisfied by a server response—latency—is one of the largest limiting factors in a user's perception of system performance. This request-response cycle time is for the most part out of your direct control as a system administrator. For example, there's nothing you can do about a slow router on the network. Network bandwidth is the most likely source of a performance bottleneck on a site that's serving primarily static content. You can monitor the network and mitigate some of these issues by tuning your connection to the network and maximizing your effective bandwidth as best you can. </p>
+<p>You can measure effective bandwidth by determining the rate at which your server sends and receives data. There are several performance counters that measure data transmission for the various network service components available on the server. These include counters for the Web, FTP, and SMTP services, the TCP object, the IP object, and the Network Interface object. </p>
+<p>Table 10.4 summarizes the key network-related counters. </p>
+<p>
+<strong>Table 10.4 Network-Related Counters</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Counter(s)</p>
+</th><th>
+<p>Comments</p>
+</th></tr>
+<tr><td>
+<p>
+<strong>Network Interface: Bytes Total/sec</strong>
+</p>
+</td><td>
+<p>Use to determine if your network connection is creating<strong>&nbsp;</strong>a bottleneck. Compare this counter to the total band-width of your network adapter. You should be using no more than 50 percent of the network adapter capacity.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Web Service: Maximum Connections and Web Service: Total Connection Attempts</strong>
+</p>
+</td><td>
+<p>If you are running other services that use the network connection, you should monitor these counters to ensure<strong>&nbsp;</strong>that the Web server can use as much of the connection<strong>&nbsp;</strong>as it needs.</p>
+</td></tr>
+</tbody></table>
+
+<p>
+<strong>Note </strong>Remember to check memory and processor usage. If these numbers are high, the network might not be the problem. </p>
+<h5>Disk Optimization</h5>
+<p>Generally speaking, if there is high disk activity other than logging, this means that other areas of your system need tuning. However, the type of site you host can have a significant impact on the frequency of disk seeks. For example: </p>
+<ul>
+<li>
+<p>There is a very large file set that's accessed randomly.&nbsp;</p>
+</li>
+<li>
+<p>The files on the site tend to be very large.&nbsp;</p>
+</li>
+<li>
+<p>A database is running on the same server, and clients are making dissimilar requests.&nbsp;</p>
+</li>
+<li>
+<p>Intensive logging routines are running.&nbsp;</p>
+</li>
+</ul>
+<p>Table 10.5 summarizes the key disk-related counters. </p>
+<p>
+<strong>Table 10.5 Disk-Related Counters</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Counter(s)</p>
+</th><th>
+<p>Comments</p>
+</th></tr>
+<tr><td>
+<p>
+<strong>Processor: %Processor Time, Network Interface Connection: Bytes Total/sec, </strong>and<strong> PhysicalDisk: %Disk Time</strong>
+</p>
+</td><td>
+<p>If all three of these counters have high values, the hard disk is not causing a bottleneck. However, if %Disk Time is high and the other two counters are low, the disk might be the bottleneck.</p>
+</td></tr>
+</tbody></table>
+
+<h5>Security Overhead</h5>
+<p>There are performance costs associated with all security techniques. Because the Windows 2000 and IIS security services are integrated into several of the operating system services, you cannot monitor security features separately from these services. The best way to measure security overhead is to run tests against the Web server with the security feature turned off and then run them again with the security feature turned on. Make sure that you run these tests against a fixed server configuration with a fixed workload to ensure that the only variable is the security feature. </p>
+<p>Table 10.6 summarizes the key security-related items to monitor. </p>
+<p>
+<strong>Table 10.6 Security-Related Items</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Counter</p>
+</th><th>
+<p>Comments</p>
+</th></tr>
+<tr><td>
+<p>
+<strong>Processor Activity and the Processor Queue</strong>
+</p>
+</td><td>
+<p>Authentication, IP address checking, Secure Sockets Layer (SSL) protocol, and encryption schemes require significant processing. You will see increased processor activity (in privileged and user mode) and an increase in context switches and interrupts. If the processors aren't adequate for the load, you'll see queues develop.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Physical Memory</strong>
+</p>
+</td><td>
+<p>The system has to store and retrieve more user information. In addition, SSL uses long keys—up to 1024 bits—for encrypting and decrypting information.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Network Traffic</strong>
+</p>
+</td><td>
+<p>You will see an increase in network traffic between the Web server and the domain controller that is used for authenticating logon information and verifying IP addresses. </p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Latency and Delays</strong>
+</p>
+</td><td>
+<p>The most visible performance degradation is the result of encryption and decryption, both of which use a significant number of processor cycles. Downloading files from servers by using SSL can be anywhere from 10 to 100 times slower than from servers that are not using SSL.</p>
+</td></tr>
+</tbody></table>
+
+<h5>Tuning and Troubleshooting Suggestions</h5>
+<p>If your investigations lead you to believe that you need to address specific hardware-related performance issues, consider the alternatives listed in Table 10.7, which are based on a single Web server scenario. </p>
+<p>
+<strong>Table 10.7 Tuning and Troubleshooting Your Web Server</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Suggestion</p>
+</th><th>
+<p>Comments</p>
+</th></tr>
+<tr><td>
+<p>Upgrade to larger L2 caches.</p>
+</td><td>
+<p>If you need to add or upgrade processors, select processors with a large secondary (L2) cache. Server applications, such as IIS, benefit from large processor caches (2 MB or more if the cache is external, up to the maximum available if it is on the CPU).</p>
+</td></tr>
+<tr><td>
+<p>Upgrade to faster CPUs.</p>
+</td><td>
+<p>Web applications, in particular, benefit from faster processors.</p>
+</td></tr>
+<tr><td>
+<p>Set aggressive connection time outs.</p>
+</td><td>
+<p>Aggressive time-outs help combat latency because open connections degrade performance. The default time-out setting in the metabase is 15 minutes.</p>
+</td></tr>
+<tr><td>
+<p>Use expires headers.</p>
+</td><td>
+<p>Set expires headers on static and dynamic pages to allow content to be stored in the client's cache. This improves response time and reduces the load on the server as well as network traffic.</p>
+</td></tr>
+<tr><td>
+<p>Enable ASP buffering.</p>
+</td><td>
+<p>Buffering allows all application output to be collected in a buffer before it's transmitted across the network. This cuts down on network response times. Although it reduces response time and creates the impression that a page is slower and less interactive, you can compensate for this by using <strong>Response.Flush</strong>. ASP buffering is enabled by default after a clean installation of Windows 2000, but it might not be enabled after an upgrade.</p>
+</td></tr>
+<tr><td>
+<p>Lengthen connection queues and use HTTP keep-alives.</p>
+</td><td>
+<p>Longer connection queues enable you to reduce overhead by enabling the server to maintain more connection requests. HTTP keep-alives maintain a client's connection to the server even after the initial request is complete. This feature reduces latency and CPU processing. Both these techniques can help make better use of the available bandwidth.</p>
+</td></tr>
+<tr><td>
+<p>Reduce file sizes.</p>
+</td><td>
+<p>Reduced file sizes generally improve performance. You can use compressed format for image files and limit the number of images and other large files. You can also reduce file sizes by tightening up HTML and ASP code, and by removing redundant blocks of code in ASP files.</p>
+</td></tr>
+<tr><td>
+<p>Store log files on separate disks and remove nonessential information.</p>
+</td><td>
+<p>Disk writes for the separate log files that are maintained for each site can cause bottlenecks. Store these files on a separate partition or disk from your Web server. You can also avoid logging non-vital information. For example, you could place image files in a separate virtual directory and disable logging for that directory.</p>
+</td></tr>
+<tr><td>
+<p>Use RAID and striping.</p>
+</td><td>
+<p>Use RAID and striped disk sets to improve disk access. Another option is using a controller with a large RAM cache. If the site uses frequent database access, make sure that the database is on a different server than the Web server.</p>
+</td></tr>
+<tr><td>
+<p>Use CPU throttling, if necessary.</p>
+</td><td>
+<p>Use process accounting, which logs the CPU and other resources used by a Web site, to determine if process throttling should be implemented. Process throttling limits the amount of resources that a site can use. Both these features work for CGI applications and for applications that are run out of process. Take care to monitor your system carefully after implementing process throttling—it can backfire on you. Because the throttled Dllhost process runs at a lower priority, it won't respond quickly to requests from the Inetinfo process, which means that several I/O threads can be tied up, thereby degrading server responsiveness.</p>
+</td></tr>
+</tbody></table>
+
+<div>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">Top of page</a>
+<br>
+</div>
+<h3 id="EEAA">Testing and Tuning Applications </h3>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>One of the benefits of running your Web servers in a cluster is that the impact of a slow running application is alleviated. Unfortunately, this only serves to hide an application performance issue; it doesn't fix the problem. </p>
+<p>Before you deploy an application to a production server, it should be tested, not only for bugs and memory leaks, but for performance as well. </p>
+<h4>Anticipating Application Load</h4>
+<p>To properly test an ASP application you have to determine what type of load is anticipated for the application. We recommend that you break this load down as follows: </p>
+<ul>
+<li>
+<p>
+<strong>Total number of unique application users</strong>—You can use the total of hits per month or, for more granularity, the total number of hits per hour.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Total number of concurrent users</strong>—You should base this number on peak time usage.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Peak request rate</strong>—You should determine how many pages need to be served per second in a worst-case scenario.&nbsp;</p>
+</li>
+</ul>
+<h5>Determining the Total Number of Users</h5>
+<p>In a production environment, it may be difficult to determine the total number of users and concurrent users for the application. For Internet sites, you should: </p>
+<ul>
+<li>
+<p>Break down the IIS server logs to segment usage data.&nbsp;</p>
+</li>
+<li>
+<p>Take a best guess at how much traffic the site is likely to attract.&nbsp;</p>
+</li>
+<li>
+<p>Project a worst-case usage scenario.&nbsp;</p>
+</li>
+</ul>
+<p>If your site is primarily for intranet use, you should: </p>
+<ul>
+<li>
+<p>Break down the IIS server logs to segment usage data.&nbsp;</p>
+</li>
+<li>
+<p>Try to determine who is using the site. Is everyone or a selected group of users? Calculate how many computers are on the corporate network, and try to identify usage peaks.&nbsp;</p>
+</li>
+<li>
+<p>Project a worst-case scenario.&nbsp;</p>
+</li>
+</ul>
+<h4>Stress Test the Application</h4>
+<p>After you've established a context for testing, you can use the WAS tool to run test scripts against the server. This tool enables you to simulate different types and degrees of user load and collect performance data. </p>
+<p>You can download the newest version of the tool from the WAS Tool site at <a href="http://www.microsoft.com/technet/archive/itsolutions/intranet/downloads/webstres.mspx">http://www.microsoft.com/technet/archive/itsolutions/intranet/downloads/webstres.mspx</a>. While you're at the site, you should also download the white paper "Web Application Stress Test and Data Analysis." Prepared by the Unisys Consulting Service, this paper documents the work they did for an enterprise customer who wanted them to assess and analyze the scalability and performance of a Web application that made extensive use of SQL Server 7.0 stored procedures. The customer's goals included determining the appropriate hardware platform for hosting the application, addressing potential performance bottlenecks, and estimating the typical response time that the application's users could expect. </p>
+<p>We also recommend the following print-based resources for optimizing, testing, and tuning your ASP applications: </p>
+<ul>
+<li>
+<p>Reilly and Gibbs, <em>Chapter 26, "Optimizing ASP Performance</em>," <em>Professional Active Server Pages 3.0</em>, WROX Press, October 1999.&nbsp;</p>
+</li>
+<li>
+<p>
+<em>Appendix A, "ASP Best Practices," in the</em>&nbsp;<em>Internet Information Services 5.0 Resource Guide</em>, Microsoft Press, 2000.&nbsp;</p>
+</li>
+</ul>
+<p>Table 10.8 lists several additional online resources that deal with Web application performance and tuning. </p>
+<p>
+<strong>Table 10.8 Application Performance Resources</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Title</p>
+</th><th>
+<p>Author</p>
+</th><th>
+<p>Location</p>
+</th></tr>
+<tr><td>
+<p>15 ASP Tips to Improve Performance and Style</p>
+</td><td>	
+						&nbsp;
+						</td><td>
+<p>
+<a href="http://msdn.microsoft.com/workshop/server/asp/asptips.asp">http://msdn.microsoft.com/workshop/server/asp/asptips.asp</a>&nbsp;</p>
+</td></tr>
+<tr><td>
+<p>Server Performance and Scalability Killers</p>
+</td><td>
+<p>George Reilly</p>
+</td><td>
+<p>
+<a href="http://msdn.microsoft.com/workshop/server/iis/tencom.asp">http://msdn.microsoft.com/workshop/server/iis/tencom.asp</a>&nbsp;</p>
+</td></tr>
+<tr><td>
+<p>Maximizing the Performance of Your Active Server Pages</p>
+</td><td>
+<p>Nancy Winnick Cluts</p>
+</td><td>
+<p>
+<a href="http://msdn.microsoft.com/workshop/server/asp/maxperf.asp">http://msdn.microsoft.com/workshop/server/asp/maxperf.asp</a>&nbsp;</p>
+</td></tr>
+<tr><td>
+<p>Got Any Cache?</p>
+</td><td>
+<p>Nancy Winnick Cluts</p>
+</td><td>
+<p>
+<a href="http://msdn.microsoft.com/workshop/entry.asp">http://msdn.microsoft.com/workshop/server/feature/cache.asp</a>&nbsp;</p>
+</td></tr>
+<tr><td>
+<p>Tips to Improve ASP Application Performance</p>
+</td><td>
+<p>Srinivasa Sivakumar</p>
+</td><td>
+<p>
+<a href="http://www.15seconds.com/issue/000106.htm">http://www.15seconds.com/issue/000106.htm</a>&nbsp;</p>
+</td></tr>
+<tr><td>
+<p>Timing the Execution Time of Your ASP Scripts</p>
+</td><td>
+<p>Mike Shaffer </p>
+</td><td>
+<p>
+<a href="http://www.4guysfromrolla.com/webtech/122799-1.shtml">http://www.4guysfromrolla.com/webtech/122799-1.shtml</a>&nbsp;</p>
+</td></tr>
+<tr><td>
+<p>Testing the Performance of Your Web Application</p>
+</td><td>
+<p>Matt Odhner</p>
+</td><td>
+<p>
+                  http://www.microsoft.com/technet/iis/wastip.asp&nbsp;</p>
+</td></tr>
+<tr><td>
+<p>Improve the Performance of Your MDAC Application</p>
+</td><td>
+<p>Suresh Kannan</p>
+</td><td>
+<p>
+<a href="http://www.microsoft.com/data/impperf.htm">http://www.microsoft.com/data/impperf.htm</a>&nbsp;</p>
+</td></tr>
+</tbody></table>
+
+<div>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">Top of page</a>
+<br>
+</div>
+<h3 id="EDAA">The Web Application Stress Tool </h3>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>We used the Web Application Stress (WAS) tool extensively when creating and testing our sample clusters for functionality, performance, load balancing adjustment, and monitor testing. Because this tool realistically simulates multiple browsers requesting pages from a Web application, you can gather meaningful performance metrics. </p>
+<p>You can create the scripts that the WAS tool uses in several ways: manually, by recording browser activity, by pointing to an IIS log file, by pointing to the content tree, or by importing a script. The many benefits of using Web Application Stress include: </p>
+<ul>
+<li>
+<p>Using multiple user names and passwords to gain access to test sites that use the most common forms of authentication and encryption including Distributed Password Authentication (DPA), NTLM, and SSL.&nbsp;</p>
+</li>
+<li>
+<p>Support for dynamic cookies that maintain a relationship with the WAS clients, which enables realistic personalized test scenarios and session support.&nbsp;</p>
+</li>
+<li>
+<p>Running a test script by using any number of clients, all of which can be controlled from a single centralized WAS manager.&nbsp;</p>
+</li>
+<li>
+<p>Configurable bandwidth throttling to simulate modem throughput.&nbsp;</p>
+</li>
+<li>
+<p>A custom query-string editor that allows you to save name-value pair combinations as templates and then use these templates across multiple tests.&nbsp;</p>
+</li>
+<li>
+<p>Providing summary reports with extensive performance data, including percentiles that remove outliers. In addition to the performance data gathered by the test targets, WAS allows you to specify performance counters that you run against the targets, which can be used to provide a validity check on performance data.&nbsp;</p>
+</li>
+<li>
+<p>Support for page groups, which allows you to logically group files and control script flow execution.&nbsp;</p>
+</li>
+<li>
+<p>Configuration of time delays between requests (socket level) and script item requests, which enables you to produce exact time sequences for testing trace conditions.&nbsp;</p>
+</li>
+</ul>
+<p>Figure 10.2 shows the configuration options that are available in WAS. (Note: The last option, which is not fully visible, is <strong>Name resolution</strong>. You can enable this option so that network lookups on remote clients are supported.) </p>
+<p>
+<img id="f10uj02" alt="Bb734903.f10uj02(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC11465.gif" title="Bb734903.f10uj02(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.2 The WAS tool configuration window</strong>&nbsp;</p>
+<p>In addition to the configuration options shown in Figure 10.2, you can configure individual pages that are used in your test scripts. Table 10.9 summarizes the main configuration settings that you can use at the page level. </p>
+<p>
+<strong>Table 10.9 Page-Level WAS Configuration Options</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Setting</p>
+</th><th>
+<p>Description</p>
+</th></tr>
+<tr><td>
+<p>
+<strong>HTTP Verb</strong>
+</p>
+</td><td>
+<p>Specify the <strong>GET</strong>, <strong>POST</strong>, <strong>HEAD</strong>, or <strong>PUT</strong> method for handling the page.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Querystring</strong>
+</p>
+</td><td>
+<p>Specify formatting; provide name, distribution, and value. Import ASP or HTML fields.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Post data</strong>
+</p>
+</td><td>
+<p>Specify custom <strong>POST</strong> data in text or binary format.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Custom headers</strong>
+</p>
+</td><td>
+<p>Use default header information or provide custom HTTP headers. Headers can be static or dynamic.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>SSL</strong>
+</p>
+</td><td>
+<p>Enable SSL for a page.</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Remote Data Services (RDS)</strong>
+</p>
+</td><td>
+<p>Enable Remote Data Services (RDS) and convert query to RDS format.</p>
+</td></tr>
+</tbody></table>
+
+<p>Figure 10.3 shows the WAS reporting interface and the sample report that was generated after we ran one of our test scripts against a test cluster consisting of two Web servers. </p>
+<p>
+<img id="f10uj03" alt="Bb734903.f10uj03(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC83068.gif" title="Bb734903.f10uj03(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.3 Performance data generated by the WAS tool</strong>&nbsp;</p>
+<p>
+<strong>Note </strong>If you want to test loads for clients that are running the Microsoft Win32 API, download the Windows DNA Performance Kit Beta from <a href="http://www.microsoft.com/com/">http://www.microsoft.com/com/resources/windnaperf.asp</a>. </p>
+<h4>Using WAS to Test NLB Web Clusters</h4>
+<p>Because a WAS stress test uses a small, limited set of client IP addresses and ports, the Network Load Balancing (NLB) assumption of wide distribution in client numbers is invalidated. As a result, you may observe uneven traffic across the cluster. </p>
+<p>The following factors will affect the distribution of traffic in WAS testing for an NLB cluster: </p>
+<ul>
+<li>
+<p>
+<strong>Load balancing affinity</strong>—For best results, the cluster should be configured for No affinity. If Single IP or Class C affinity is used, be sure to use several WAS clients, with different Class C addresses in the latter case. No affinity is often the most practical choice.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>The number of WAS clients</strong>—Each WAS client uses a single IP address for all HTTP connections. The more clients that are used, the more diversity there is in client IP numbers.&nbsp;</p>
+<p>
+<strong>Note </strong>Adding multiple IP addresses to a single client will not affect WAS behavior because only one IP is ever used per computer.&nbsp;</p>
+<p>At the socket level, WAS uses an implicit bind when making a request. This means that the operating system supplies the client IP address and port. Microsoft Windows NT behavior is to always provide the interface address from its routing table. This interface address is unique, so adding additional IP addresses to a network adapter does not provide more diversity to the WAS client address space.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>HTTP keep-alives</strong>—When HTTP keep-alives are enabled, all items in a page group are requested over a single socket. Because this socket uses a common IP address and client port, NLB sends all requests in that page group to the same Web server. Disabling keep-alives forces a different client port for each item in the page group. This means that each item can be served from a different Web server.&nbsp;</p>
+<p>
+<strong>Note </strong>With Single or Class C affinity, the keep-alive feature will not affect load balancing. Disabling keep-alives applies only to the No affinity setting.&nbsp;</p>
+<p>Windows NT uses incremental local port numbers in the 1500 through 4000 range, looping back to 1500 after exceeding the upper boundary. This provides excellent diversity in port numbers; however, keep-alives must be avoided in order for large page groups to take advantage of this.&nbsp;</p>
+</li>
+</ul>
+<div>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">Top of page</a>
+<br>
+</div>
+<h3 id="ECAA">Performance Counters </h3>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>As we noted in Chapter 7, "Monitoring," Application Center enables a default set of performance counters that are used to capture performance data on every cluster member and logs this data to the Application Center Events and Performance Logging database. As soon as you create a cluster on a server, or add a server to a cluster, counter logging is initiated and counter data is written to the local instance of the ACLog database. </p>
+<p>
+<strong>Note </strong>The default counters are defined in the file Perflogconsumer.mof, which is used to create the Windows Management Instrumentation (WMI) counter instances that the Application Center Events and Performance Logging database uses. In turn, a WMI performance-logging consumer uses an agent to write counter information to the database. In order to display this counter list in the user interface, Application Center queries the database with a query component. </p>
+<p>Each of the installed counters can be enabled for graphing on the performance chart that's available for the cluster or member nodes by using a Web page dialog that you can launch from any performance chart that's displayed in the details pane of the snap-in. (See "Enabling Counter Graphing," later in this chapter.) </p>
+<h4>The Default Performance Counters</h4>
+<p>The cross-section of counters selected as the Application Center default performance counters are listed in Table 10.10. Based on the feedback provided by Microsoft Consulting Services, product teams, early adopters, and beta testers, it was determined that these counters were the ones most likely to be used on a regular basis by system administrators. These counters should meet most of your normal operational performance monitoring requirements. You'll notice that most of these counters have already been identified in earlier sections of the chapter that dealt with monitoring the different aspects of a Web server environment. You can, of course, add additional counters, which we'll cover later in this section. </p>
+<p>In addition to listing the Application Center default performance counters alphabetically by name, Table 10.10 also provides a short description for each counter, identifies the counter's unit of measurement, and identifies the scope of the data. Scope describes what the data represents, the present value, an accumulated value, an average, or data collected over a period of time. </p>
+<p>
+<strong>Table 10.10 ApplicationCenter Performance Counters</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Counter</p>
+</th><th>
+<p>Description</p>
+</th><th>
+<p>Units</p>
+</th><th>
+<p>Scope</p>
+</th></tr>
+<tr><td>
+<p>
+<strong>Available Bytes </strong>(memory)</p>
+</td><td>
+<p>The amount of physical memory that is available to processes running on the computer. It is calculated by summing space on the Zeroed, Free, and Stand by memory lists. This figure should be at least 5 percent of total memory at all times.<strong>(1)</strong>
+</p>
+</td><td>
+<p>Bytes</p>
+</td><td>
+<p>Present value</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Bytes Total/sec </strong>(Web Service)</p>
+</td><td>
+<p>The sum of Bytes Sent/sec and Bytes Received/sec. This is the total rate of bytes that are transferred by the Web Service.</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Data per time period</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Connections active </strong>(TCP)</p>
+</td><td>
+<p>The number of times TCP connections have made a direct transition to the Syn-sent state from the Closed state.</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Present value</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Context Switches/sec </strong>(System)</p>
+</td><td>
+<p>This value can indicate excessive locking in code, perhaps creating a contention for resources. If too high, add another server or check with Microsoft for the latest patches.</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Data per time period</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Current Connections </strong>(Web Service)</p>
+</td><td>
+<p>The number of current client connections to the Web Service.</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Present value</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Current Disk Queue Length </strong>(physical disk)</p>
+</td><td>
+<p>The number of requests outstanding on the disk at the time the performance data is collected. It includes requests in service at the time of the reading. Multi-spindle disk devices can have multiple requests active at one time, but other concurrent requests are awaiting service. This counter might reflect a transitory high or low queue length, but if there is a sustained load on the disk drive, it is likely that this will be consistently high. Requests are experiencing delays proportional to the length of this queue minus the number of spindles on the disks.<strong>(2)</strong>
+</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Present value</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Errors per second </strong>(ASP)</p>
+</td><td>
+<p>The number of errors generated by ASP applications, per second.</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Data per time period</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Get Requests/sec</strong> (Web Service)</p>
+</td><td>
+<p>The number of HTTP requests that are using the <strong>GET</strong> method, per second. The <strong>GET</strong> method is the most common method used on the Web.</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Data per time period</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>ISAPI extension requests/sec </strong>(Web Service)</p>
+</td><td>
+<p>The number of ISAPI extension requests that are simultaneously being processed by the Web Service, per second.</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Data per time period</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Page faults/sec</strong> (memory)</p>
+</td><td>
+<p>The number of times, per second, that the server reads the page file on the disk or from memory that is not assigned to the working set. Most CPUs can handle a large numbers of page faults without consequence; however, if disk reads are high, there might be performance degradation.</p>
+</td><td>
+<p>Bytes</p>
+</td><td>
+<p>Data per time period</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Private Bytes </strong>(process: Inetinfo)</p>
+</td><td>
+<p>The number of bytes of memory that are taken up by a particular process (in this case, Inetinfo, which is part of IIS).</p>
+</td><td>
+<p>Bytes</p>
+</td><td>
+<p>Present value</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>% Privileged Time</strong> (CPU)</p>
+</td><td>
+<p>The percentage of non-idle processor time spent in privileged mode. (Privileged mode is a processing mode designed for operating system components and hardware-manipulating drivers. It allows direct access to hardware and all memory. The alternative, user mode, is a restricted processing mode designed for applications, environment subsystems, and integral subsystems. The operating system switches application threads to privileged mode to access operating system services). % Privileged Time includes time servicing interrupts and deferred procedure calls (DPCs). A high rate of privileged time might be attributable to a large number of interrupts that are being generated by a failing device. This counter displays the average busy time as a percentage of the sample time.</p>
+</td><td>
+<p>Percentage</p>
+</td><td>
+<p>Average of accumulated values</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Processor Utilization </strong>(CPU)</p>
+</td><td>
+<p>The percentage of time that the processor is executing a non-idle thread. This counter was designed as a primary indicator of processor activity. It is calculated by measuring the time that the processor spends executing the thread of the Idle process in each sample interval, and subtracting that value from 100 percent. Processor bottlenecks are characterized by high Processor:% Processor Time numbers while the network adapter remains well below capacity.<strong>(3)</strong>
+</p>
+</td><td>
+<p>Percentage</p>
+</td><td>
+<p>Average of accumulated values</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>% User Time </strong>(CPU)</p>
+</td><td>
+<p>The percentage of non-idle processor time spent in user mode. (User mode is a restricted processing mode designed for applications, environment subsystems, and integral sub-systems. The alternative, privileged mode, is designed for operating system components and allows direct access to hardware and all memory. The operating system switches application threads to privileged mode to access operating system services.) This counter displays the average busy time as a percentage of the sample time.</p>
+</td><td>
+<p>Percentage</p>
+</td><td>
+<p>Average of accumulated values</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Request execution time </strong>(ASP)</p>
+</td><td>
+<p>The number of milliseconds that it took the most recent ASP request to complete.</p>
+</td><td>
+<p>Milliseconds</p>
+</td><td>
+<p>Last value</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Requests per second </strong>(ASP)</p>
+</td><td>
+<p>The number of requests executed, per second.</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Data per time period</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Requests Queued </strong>(ASP)</p>
+</td><td>
+<p>The number of requests waiting for service from the queue. This number should be small, except during heavy traffic periods. Large numbers of queued requests indicates that there is a performance bottleneck somewhere in your server.</p>
+</td><td>
+<p>Integer</p>
+</td><td>
+<p>Present value</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Request wait time </strong>(ASP)</p>
+</td><td>
+<p>The amount of time that the most recent ASP request was waiting in the queue.</p>
+</td><td>
+<p>Milliseconds</p>
+</td><td>
+<p>Last value</p>
+</td></tr>
+<tr><td>
+<p>
+<strong>Total Server Memory </strong>(SQL Server: Memory Manager)</p>
+</td><td>
+<p>The total amount of dynamic memory the server is currently consuming.</p>
+</td><td>
+<p>Bytes</p>
+</td><td>
+<p>Present value</p>
+</td></tr>
+</tbody></table>
+
+<p>
+<strong>(1)</strong> This value should be greater than 20 MB. </p>
+<p>
+<strong>(2)</strong> This difference should average less than 2 for good performance. </p>
+<p>
+<strong>(3)</strong> Processor utilization does occasionally peak at fairly high levels, but this level should not be sustained for a long period. </p>
+<p>
+<strong>The System Test team's favorite counters</strong>&nbsp;</p>
+<p>The Application Center System Test team identified the following counters as their favorites for isolating performance bottlenecks and identifying memory leaks: </p>
+<ul>
+<li>
+<p>Active Server Pages: Requests/sec&nbsp;</p>
+</li>
+<li>
+<p>Active Server Pages: Errors/sec&nbsp;</p>
+</li>
+<li>
+<p>Active Server Pages: Transactions/Sec&nbsp;</p>
+</li>
+<li>
+<p>Distributed Transactions Coordinator: Response Time -- Average&nbsp;</p>
+</li>
+<li>
+<p>Distributed Transactions Coordinator: Transactions/sec&nbsp;</p>
+</li>
+<li>
+<p>Memory: Available MBytes&nbsp;</p>
+</li>
+<li>
+<p>Network Interface: Bytes Total/sec&nbsp;</p>
+</li>
+<li>
+<p>Processor: %Processor time&nbsp;</p>
+</li>
+</ul>
+<p>You can obtain a current list of the installed counters on a server running Application Center by using one of several techniques. The first method, of course, is via the Application Center user interface: </p>
+<ul>
+<li>
+<p>In the Application Center snap-in, in the performance chart view, click <strong>Add</strong>.&nbsp;</p>
+<p>The <strong>Add a Counter</strong> dialog box, which displays all the counters that are currently installed on the system, appears.&nbsp;</p>
+</li>
+</ul>
+<p>
+<strong>Note </strong>It is possible to get two different counter lists depending on the way you query for them. The <strong>Add a Counter</strong> dialog box queries data from the Application Center Events and Performance Logging database; all other methods query the WMI repository. If there are counters that are not enabled for logging, the two lists will differ, with the one retrieved from the database being shorter. You can retrieve old data for counters that are no longer being collected. </p>
+<p>The second method involves using the WMI Tester (Wbemtest.exe) or WMI Common Information Model (CIM) Studio (CIM Studio) and running one of these against the member from which you want to obtain counter information. Follow these steps: </p>
+<ol>
+<li>
+<p>Connect to the namespace, <em>root</em>\MicrosoftApplicationCenter.&nbsp;</p>
+</li>
+<li>
+<p>Enumerate the instances of the class <strong>MicrosoftAC_CapacityCounterConfig</strong>.&nbsp;</p>
+</li>
+</ol>
+<p>Finally, for the third method, you can run the Counters.vbs script that's provided on the Application Center CD. In addition to obtaining a list of the installed counters, you can use this script to "delete" a counter. In the context of the Counters.vbs script, "delete" means to stop collecting data from the counter. It does not remove the counter from the ACLog database. </p>
+<p>
+<strong>Caution </strong>You should be extremely cautious when writing any scripts that access ACLog and remove counters. If done incorrectly, you can easily affect data integrity and corrupt the database. </p>
+<p>To run this script: </p>
+<ol>
+<li>
+<p>In Windows 2000, open a command prompt.&nbsp;</p>
+</li>
+<li>
+<p>In the <strong>Run</strong> box, type <strong>Counters.vbs</strong> and then press ENTER.&nbsp;</p>
+</li>
+</ol>
+<p>Run without parameters, the script displays help for the two parameters that are available, <strong>/list</strong> and <strong>/delete</strong>. Use the <strong>/list</strong> parameter to list the installed counters and the <strong>/delete</strong> parameter, accompanied by a counter name enclosed in quotation marks, to delete the specified counter. </p>
+<p>Here is the Counters.vbs script: </p>
+<pre>set args = wscript.arguments 
+cmd = "" 
+if args.Count &gt; 0 then  
+cmd = args(0) 
+end if 
+select case cmd 
+case "/list" 
+listCounters 
+case "/delete" 
+deleteCounter(args(1)) 
+case else 
+showHelp 
+end select 
+function e(str) 
+wscript.echo(str) 
+end function 
+// 
+// Display help if script is executed without parameters 
+// 
+function showHelp() 
+e("/list to display installed counters") 
+e("/delete &lt;counter name&gt; to stop collecting a counter") 
+end function 
+// 
+// List the counters 
+//  
+function listCounters() 
+Set wbemLocator = CreateObject("WbemScripting.SWbemLocator") 
+Set wbemService = wbemLocator.ConnectServer(strComputerName,"root\MicrosoftApplicationCenter") 
+wbemLocator.Security_.ImpersonationLevel=3 
+Set counterInstances = wbemService.InstancesOf("MicrosoftAC_CapacityCounterConfig") 
+For Each counter in counterInstances 
+counterName = counter.Name 
+e(counterName) 
+Next 
+end function 
+// 
+// Stop logging data from the specified counter 
+//  
+function deleteCounter(counterName) 
+Set wbemLocator = CreateObject("WbemScripting.SWbemLocator") 
+Set wbemService = wbemLocator.ConnectServer(strComputerName,"root\MicrosoftApplicationCenter") 
+wbemLocator.Security_.ImpersonationLevel=3 
+wbemService.Delete("MicrosoftAC_CapacityCounterConfig.Name=""" + counterName +"""") 
+e("Deleted counter: " + counterName) 
+end function 
+</pre>
+<h4>Adding Additional Performance Counters</h4>
+<p>If the counters that are provided don't completely meet your monitoring requirements, you can load additional counters into the Application Center namespace. Creating new counters isn't difficult; however, you should determine whether or not new counters are needed to meet an ongoing operational requirement. </p>
+<h5>When to Create New Counters</h5>
+<p>We recommend that you only create new cluster-wide counters if you intend to gather data on an ongoing basis with the intention of accumulating historical data for reporting and planning purposes. In this case, you would create the counter on the cluster controller so that the updated counter collection is replicated to all the cluster members the next time there's a full synchronization—which you can force manually after you create the new counter(s). </p>
+<p>In situations where you require additional monitoring capability for a short period of time, such as performance tuning on a single member, you can add performance counters to that member. Remember to take the member out of the synchronization loop before creating the new counter so that the local counter collection isn't overwritten by the counter definitions on the controller. After you've finished collecting performance data, you can bring the member back into the synchronization loop; the next time a full synchronization occurs, the counter collection will be restored to its original state. If a new counter is added on a member, you need to connect directly to that member—in the <strong>Connect to server</strong> dialog box, click <strong>Manage this server only</strong>—in order to see the counter on the member. If you don't do this, you will see only the counter list for the cluster controller. </p>
+<p>An alternative to creating a new counter is to use the available operating system tools, such as Performance Monitor and Network Monitor, to perform in-depth monitoring of the server in question. With these tools, you can log the necessary data you need for ongoing analysis without changing the structure of the ACLog database and in general, it will be easier to isolate the information you require for tuning the server or an application. </p>
+<h5>Creating a New Counter</h5>
+<p>Creating a new counter is accomplished by writing a counter definition and saving it as a MOF file or by modifying the sample counters file that's provided on the Application Center CD. </p>
+<p>The following code illustrates a typical counter definition that defines a counter for the Application Center namespace: </p>
+<pre>// Specifies the WMI namespace for the instance 
+#pragma namespace("\\root\\MicrosoftApplicationCenter") 
+// 
+// Counter consumer class definition 
+// 
+instance of MicrosoftAC_CapacityCounterConfig 
+{ 
+Name = "CPU 0 Interrupts/sec"; 
+CounterPath = "\\Processor(0)\\Interrupts/sec"; 
+CounterType = 1; 
+Units = ""; 
+AggregationMethod = 1; 
+ClusterAggregation = 1; 
+DefaultScale = 0; 
+}; 
+</pre>
+<p>After you run Mofcomp against this script, the new counter is created as an instance of the <strong>MicrosoftAC_CapacityCounterConfig</strong> class. After the performance log consumer retrieves this information and logs it, a stored procedure detects the counter identifier and then writes an entry to the counter metadata table. Data integrity is enforced through this process. </p>
+<p>Let's analyze the preceding sample in more detail and then create a new counter definition that defines a new counter for the Application Center counter collection. </p>
+<p>The required properties for a counter are as follows: </p>
+<ul>
+<li>
+<p>
+<strong>Name</strong>—The counter name, which is used to identify the counter in the Application Center Events and Performance Logging database and the Application Center user interface. The name must be unique among all the counters that are being logged.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>CounterPath</strong>—The counter path, which must be specified by using Performance Data Helper (PDH) syntax with English or the default system names: <strong>\\PerfObject(</strong>
+<em>ParentInstance/ObjectInstance#InstanceIndex</em>
+<strong>)\\Counter</strong>&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>CounterType</strong>—The counter type is 1 by default. This is an internal property. <strong>Do not</strong>&nbsp;<strong>change it.</strong>&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Units</strong>—A string value that is used to specify the units of the counter that are displayed in the user interface.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>AggregationMethod</strong>—Specifies the aggregation method that will be used to do server-wide rollup calculations. <strong>AggregationMethod</strong> determines how counter values are rolled up from one time interval to another, for example, from two hours to one day. You should not aggregate any counter that collects state, such as On or Off.&nbsp;</p>
+<p>The following values can be used to specify an aggregation method for the counter: </p>
+<ul>
+<li>
+<p>
+<strong>0 = None</strong>—no aggregation is used; the existing value is rolled up.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>1 = Average</strong>—when the counter value is rolled up on the server from one interval to another, the source values are averaged.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>2 = Sum</strong>—all the values for the recording period are totaled.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>3 = Last</strong>—the last value recorded by the counter is used.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>4 = Min</strong>—the minimum value for the recording period is used.&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>5 = Max</strong>—the maximum value for the recording period is used.&nbsp;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+<strong>ClusterAggregation</strong>—Specifies the method that is used to roll up server values to provide a cluster-wide aggregated value.&nbsp;</p>
+</li>
+</ul>
+<p>
+<strong>Warning </strong>Do not use the <strong>Min</strong> or <strong>Max</strong> aggregation methods for <strong>ClusterAggregation</strong> when a counter specifies <strong>Sum</strong>—a cumulative counter—for server aggregation. The results are not useful, very unpredictable, and not supported. In addition, a <strong>ClusterAggregation</strong> value of <strong>0</strong> indicates no aggregation. As a result, this counter will not be displayed in the cluster-wide view. An example of this is <strong>Thread\ID Process</strong>. <strong>ID Process</strong> is the unique identifier for this process; <strong>ID Process</strong> numbers are reused, so they only identify a process for the lifetime of that process. </p>
+<p>Let's say, for example, that we want to add two counters to verify that there is a potential processor bottleneck caused by a client request. The two counters are <strong>Processor:Interrupts/sec</strong> and <strong>Processor:% DPC Time</strong>. The first counter tells us how much time the processor is spending on hardware interrupts, and the second tells us how much time is spent on deferred procedure calls. </p>
+<p>The easiest way to obtain the counter information that is required for the counter definition is as follows: </p>
+<ol>
+<li>
+<p>On the server, in the Microsoft Management Console (MMC), open the Performance Monitor snap-in, and then click <strong>Plus</strong>.&nbsp;</p>
+<p>The <strong>Add Counters</strong> dialog box appears.&nbsp;</p>
+</li>
+<li>
+<p>Click the down arrow to the right of the <strong>Performance object</strong> box, and then click <strong>Processor</strong>, which is the object that you want to monitor.&nbsp;</p>
+</li>
+<li>
+<p>Scroll down the list of counters for the object, and select the one that you want to use.&nbsp;</p>
+</li>
+</ol>
+<p>Figure 10.4 shows the Performance snap-in with the <strong>%DPC Time</strong> object selected as the counter. Note also that the <strong>_Total</strong> instance is selected by default. </p>
+<p>
+<img id="f10uj04" alt="Bb734903.f10uj04(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC8628.gif" title="Bb734903.f10uj04(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.4 The Performance snap-in and the Add Counters dialog box</strong>&nbsp;</p>
+<p>Using the information provided in the <strong>Add Counters</strong> dialog box, we can start building our MOF file to add the new counters. For the counter path, we have: </p>
+<ul>
+<li>
+<p>
+<strong>\\</strong>
+<em>PerfObject</em> = <strong>Processor</strong>&nbsp;</p>
+</li>
+<li>
+<p>(<em>ParentInstance/ObjectInstance#InstanceIndex</em>) = <strong>_Total</strong>&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>\\</strong>
+<em>Counter</em> = <strong>%DPC Time</strong>&nbsp;</p>
+</li>
+</ul>
+<p>The next code sample contains our new counter definition for the <strong>%DPC Time</strong> counter: </p>
+<pre>// Specifies the WMI namespace for the instance 
+#pragma namespace("\\root\\MicrosoftApplicationCenter") 
+// 
+// DPC counter consumer class definition 
+// 
+instance of MicrosoftAC_CapacityCounterConfig 
+{ 
+Name = "DPC Interrupts/sec"; 
+CounterPath = "\\Processor(_Total)\\%DPC Time"; 
+CounterType = 1; 
+Units = "Interrupts/sec"; 
+// 
+// Use averaging for cluster aggregation because summing this value across // the cluster does not provided meaningful results 
+// 
+AggregationMethod = 1; 
+ClusterAggregation = 1; 
+DefaultScale = 0; 
+}; 
+</pre>
+<p>We can repeat the preceding steps to obtain information about the <strong>%Interrupt Time</strong> counter so that we can add it to the preceding code. When all of the necessary coding is finished, we'll save the file—as a text file with a .mof file name extension—on the server where we want to add the counter. Next, we'll open the command-line window, and run Mofcomp against the file to add it to the Application Center counter collection. Finally, to verify that the counters were successfully added, from the command line, we'll run <strong>Counter.vbs /list</strong> to obtain a list of the currently active counters. This list verifies that the WMI class instances were successfully stored in the WMI repository. To verify that the counter is available for logging in the Performance view, open the <strong>Add counter</strong> dialog box, and then confirm that the counter name is listed. If the counter isn't listed, check the Event view to see if any error events were generated from running Mofcomp to add the counter. </p>
+<p>
+<strong>Note </strong>You should add new counters on the cluster controller. Because counters are a replicated property, any new counter information is replicated to all the cluster members. In addition, the list of cluster-wide counters that is displayed in the Application Center snap-in is retrieved from the controller. </p>
+<h4>Enabling Counter Graphing</h4>
+<p>Through the Application Center user interface, you can enable counter graphing on a per-member basis or across the cluster. This provides flexibility in managing your members, particularly when some, such as ACDW802AS in the test cluster we set up, do not have the same performance capabilities as the other members. </p>
+<p>The steps in enabling counter graphing in a performance chart are as follows: </p>
+<ol>
+<li>
+<p>In the console tree (on a member or the controller), click <em>membername</em> to display its status page in the details pane. In addition to member status, the details pane also displays an area where counter graphs are plotted.&nbsp;</p>
+</li>
+<li>
+<p>Click <strong>Add</strong> to activate the <strong>Add a Counter</strong> dialog box.&nbsp;</p>
+</li>
+<li>
+<p>In the <strong>Counters</strong> list, click the counter(s) you want, and then click <strong>Add</strong>.&nbsp;</p>
+</li>
+<li>
+<p>Click <strong>Close</strong> when you've finished adding counters.&nbsp;</p>
+</li>
+</ol>
+<p>Figure 10.5 illustrates the user interface for enabling a counter. </p>
+<p>Cluster-wide performance graphs are displayed when you select the cluster node view. Server counter graphs are automatically rolled up to the cluster view—in accordance with the counter aggregation settings—when the same counter is enabled on every member. (See Figure 10.6, later in this chapter, for an illustration of cluster-wide counter displays.) </p>
+<p>
+<img id="f10uj05" alt="Bb734903.f10uj05(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC111804.gif" title="Bb734903.f10uj05(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.5 Using the Add a counter dialog box to enable graphing for a counter</strong>&nbsp;</p>
+<div>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">Top of page</a>
+<br>
+</div>
+<h3 id="EBAA">Performance Monitoring Samples </h3>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>This collection of samples is provided to illustrate how, with a minimal collection of performance counters, you can monitor a cluster and its members. It also demonstrates how you can test a cluster and its applications by applying a load to the cluster with the WAS tool. </p>
+<p>Before proceeding further with our monitoring examples, there are two items that need to be highlighted: the test configuration we're using for our examples and the counter graphs. </p>
+<h4>Cluster Test Configuration</h4>
+<p>It's important to note that the test server configurations we used for working with cluster scenarios in this book <em>are not </em>representative of typical production servers. You should not infer any performance expectations from these tests. </p>
+<p>If you examine the configuration summary provided in Table 10.11, you'll see that our test servers are by no means capable of delivering the same levels of performance as the servers that most of you use in a production environment. Keep this in mind when looking at the performance results provided later in this chapter. View these results as conceptual illustrations in the context of our test computers; don't use the results as performance metrics for your own equipment. </p>
+<p>
+<strong>Table 10.11 Computer Configurations Used in Test Clusters</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Server name</p>
+</th><th>
+<p>Cluster type and role</p>
+</th><th>
+<p>CPU</p>
+</th><th>
+<p>Memory</p>
+</th><th>
+<p>Bus Speed</p>
+</th></tr>
+<tr><td>
+<p>ACDW516AS</p>
+</td><td>
+<p>Web, controller</p>
+</td><td>
+<p>1xP6-550</p>
+</td><td>
+<p>256 MB</p>
+</td><td>
+<p>66 MHz</p>
+</td></tr>
+<tr><td>
+<p>ACDW802AS</p>
+</td><td>
+<p>Web, member</p>
+</td><td>
+<p>1xP6-366</p>
+</td><td>
+<p>256 MB</p>
+</td><td>
+<p>66 MHz</p>
+</td></tr>
+<tr><td>
+<p>ACDW518AS</p>
+</td><td>
+<p>Web, member</p>
+</td><td>
+<p>1xP6-550</p>
+</td><td>
+<p>256 MB</p>
+</td><td>
+<p>66 MHz</p>
+</td></tr>
+<tr><td>
+<p>ACDW522AS</p>
+</td><td>
+<p>COM+, controller</p>
+</td><td>
+<p>1xP6-366</p>
+</td><td>
+<p>256 MB</p>
+</td><td>
+<p>66 MHz</p>
+</td></tr>
+<tr><td>
+<p>ACDW811AS</p>
+</td><td>
+<p>COM+, member</p>
+</td><td>
+<p>1xP6-233</p>
+</td><td>
+<p>256 MB</p>
+</td><td>
+<p>66 MHz</p>
+</td></tr>
+<tr><td>
+<p>ACDW822AS</p>
+</td><td>
+<p>Web, stager</p>
+</td><td>
+<p>1xP6-266</p>
+</td><td>
+<p>128 MB</p>
+</td><td>
+<p>66 MHz</p>
+</td></tr>
+</tbody></table>
+
+<h4>Counter Graphs</h4>
+<p>When you're graphing different counters, you should be aware of how the individual counter values are rolled up at the server and cluster level. Table 10.12 lists the default counters and the aggregation method that is used at the server and cluster levels. Figure 10.6 illustrates how three counters (<strong>Processor Utilization</strong>, <strong>Web Service GET Requests per second</strong>, and <strong>ASP Requests per second</strong>) are rolled up to the cluster level. </p>
+<p>
+<strong>Table 10.12 Counter Aggregation at the Server and Cluster Levels</strong>&nbsp;</p>
+<table>
+<tbody><tr><th>
+<p>Counter name</p>
+</th><th>
+<p>Server aggregation</p>
+</th><th>
+<p>Cluster aggregation</p>
+</th></tr>
+<tr><td>
+<p>ASP Errors per second</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Sum</p>
+</td></tr>
+<tr><td>
+<p>ASP Requests Queued</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Sum</p>
+</td></tr>
+<tr><td>
+<p>ASP Requests Queued</p>
+</td><td>
+<p>Max value</p>
+</td><td>
+<p>Max value</p>
+</td></tr>
+<tr><td>
+<p>ASP Requests per second</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Sum</p>
+</td></tr>
+<tr><td>
+<p>ASP Request Execution Time</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>ASP Request Wait Time</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>Memory Available Bytes</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>Memory Page Faults per second</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>Physical Disk Queue Length</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Sum</p>
+</td></tr>
+<tr><td>
+<p>Inetinfo Private Bytes</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>Processor Utilization</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>Processor User Time</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>Processor Privileged Time</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>Log Database Total Memory</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>Context Switches per second</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Average</p>
+</td></tr>
+<tr><td>
+<p>TCP Connections Established</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Sum</p>
+</td></tr>
+<tr><td>
+<p>Web Service Current Connections</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Sum</p>
+</td></tr>
+<tr><td>
+<p>Web Service GET Requests per second</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Sum</p>
+</td></tr>
+<tr><td>
+<p>Web Service Bytes Total per second</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Sum</p>
+</td></tr>
+<tr><td>
+<p>Web Service ISAPI Requests per second</p>
+</td><td>
+<p>Average</p>
+</td><td>
+<p>Sum</p>
+</td></tr>
+</tbody></table>
+
+<p>In Figure 10.6, the graph plots are denoted as follows: </p>
+<ul>
+<li>
+<p>
+<strong>A: Processor Utilization</strong>&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>B: Web Service GET Requests per second</strong>&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>C: ASP Requests per second</strong>&nbsp;</p>
+</li>
+</ul>
+<p>
+<strong>Note </strong>This labeling convention is used for all the sample performance graphs in the balance of this chapter. </p>
+<p>
+<img id="f10uj06" alt="Bb734903.f10uj06(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC149012.gif" title="Bb734903.f10uj06(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.6 Performance graph for a Web cluster with two load-balanced nodes</strong>&nbsp;</p>
+<p>Referring to Figure 10.6, note that the <strong>Processor Utilization</strong> is averaged, whereas <strong>Web Service GET Requests</strong> and <strong>ASP Requests</strong> are summed. </p>
+<p>
+<strong>NoteApplicationCenter performance charts exhibit the same behavior as the Windows 2000 Performance Monitor. The values used for the counter graph appear out of synchronization with the numeric values (for example, Min</strong>, <strong>Max</strong>, and <strong>Average</strong>) that appear below the graph. This is because the graph uses the values for the specified period (for example, 15 minutes), but the numeric display uses all of the values that are accumulated during the session—the session context is defined by when the Application Center snap-in is first activated. </p>
+<p>Let's move on and work with some performance monitoring examples that employ the servers and applications that we described in Chapter 8, "Creating Clusters and Deploying Applications." </p>
+<h4>The Base Environment</h4>
+<p>Our test environment uses the same application, clusters, and members that we described in Chapter 8, "Creating Clusters and Deploying Applications." We started testing by using the following configuration, and as we tested, we changed this topology by scaling out the front-end and back-end clusters. Only a few of the performance graphs produced by our testing are shown in this section. However, the entire collection of performance graphs for the various cluster topologies is included in Appendix E, "Sample Performance Charts." </p>
+<h5>Initial Topology and Cluster Configuration</h5>
+<p>The following cluster topology was used for performance testing: </p>
+<ul>
+<li>
+<p>A front-end Web cluster (RKWebCluster) that consists of a single member, the cluster controller, ACDW516AS&nbsp;</p>
+</li>
+<li>
+<p>A back-end COM+ application cluster (RKCOMCluster) that also consists of one member, ACDW522AS, the cluster controller&nbsp;</p>
+</li>
+</ul>
+<p>The Web cluster was configured as follows: </p>
+<ul>
+<li>
+<p>Web request forwarding disabled&nbsp;</p>
+</li>
+<li>
+<p>NLB client affinity set to custom (none)&nbsp;</p>
+</li>
+<li>
+<p>HTTP keep-alives disabled&nbsp;</p>
+</li>
+<li>
+<p>Load balancing weight equal for all members&nbsp;</p>
+</li>
+</ul>
+<h5>Application</h5>
+<p>We used the Pre-Flight Check application for testing and distributed it across two tiers, as described in Chapter 8, "Creating Clusters and Deploying Applications." The HTML and ASP pages are hosted on the Web tier, and the COM+ applications, AC_PF_VB and AC_PF_VC, are hosted on the COM+ application tier. Component Load Balancing (CLB) was enabled by configuring the AC_PF_VB and AC_PF_VC components to support dynamic load balancing, and ACDW522AS was identified as the member for handling component requests. </p>
+<h5>Performance Counters</h5>
+<p>Before applying a test load to the controller, we added three counters to the performance graph for the controller: <strong>Processor Utilization</strong>, <strong>Web Service GET Requests/second</strong>, and <strong>ASP Requests/second</strong>. We also added the <strong>Processor Utilization</strong> counter to the performance chart for the COM+ server. Because we're not doing any in-depth performance tuning or capacity planning, these counters are sufficient to give us a good indication of cluster performance under load and illustrate the effect of scaling out a cluster and adjusting server load balancing weights. </p>
+<h5>WAS Configuration</h5>
+<p>We used the ACPreflight script, which is included on the Resource Kit CD, for our tests and retained the script's default settings for HTTP verbs, page groups, users, and cookies. </p>
+<p>Four WAS clients were used for testing, and the following settings were changed from their default configurations: </p>
+<ul>
+<li>
+<p>
+<strong>Stress level (threads)</strong>—88&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Use random delay</strong>—0 to 1500 milliseconds&nbsp;</p>
+</li>
+<li>
+<p>
+<strong>Suspend and Warmup</strong>—5 minutes&nbsp;</p>
+</li>
+</ul>
+<h4>Scenario: Single-Node Web Cluster and Single-Node COM+ Application Cluster</h4>
+<p>In this first scenario, we wanted to push processor utilization up fairly high, which is why we reduced the amount of random delay that is used for TCP connections. Figure 10.7 shows the results we achieved. </p>
+<p>
+<img id="f10uj07" alt="Bb734903.f10uj07(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC78524.gif" title="Bb734903.f10uj07(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.7 Performance results on a single node Web cluster</strong>&nbsp;</p>
+<p>The next scenario illustrates the affect that adding an additional server has on the performance indicators shown in Figure 10.7. </p>
+<h4>Scenario: Two-Node Web Cluster and Single-Node COM+ Application Cluster</h4>
+<p>For this scenario, we added the server ACDW802AS, which, as you may recall from Table 10.11, is a less robust computer than the cluster controller. However, even this server had a significant impact on the controller's performance. Figure 10.8 shows the affect that this server had on the controller's processor utilization. </p>
+<p>
+<img id="f10uj08" alt="Bb734903.f10uj08(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC136824.gif" title="Bb734903.f10uj08(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.8 Cluster controller (ACDW516AS) performance after creating a two-node cluster</strong>&nbsp;</p>
+<p>If you compare the new <strong>Processor Utilization</strong> (<strong>A</strong>), <strong>Web GET Requests</strong> (<strong>B</strong>), and <strong>ASP Requests</strong> (<strong>C</strong>) indicators with those for the same server in Figure 10.7, you can see a noticeable difference in resource usage after adding another cluster member. Throughput decreases as well, but only on the cluster controller. The graph lines labeled <strong>D</strong> and <strong>E</strong> show the cluster total throughput for HTML and ASP pages. As you can see, total throughput is higher than on a one-node cluster. </p>
+<h4>Scenario: Three-Node Web Cluster and Single-Node COM+ Application Cluster</h4>
+<p>For this scenario, we added a third member, ACDW518AS, to the Web cluster. As expected, resource utilization decreased on the two original cluster members, but as you will note in Figure 10.9, the new member is underutilized in comparison to the other members. </p>
+<p>The graph labeled <strong>ACDW802AS</strong> in Figure 10.9 includes <strong>Processor Utilization</strong> (<strong>A1</strong>) for the cluster controller as well as the member. For clarity, the controller's Web GETs and ASP requests aren't displayed, but their performance is at the same level as the member. If you look at the performance graph (<strong>ACDW518AS</strong> in Figure 10.9) for the new member, you'll see that although ACDW518AS has the same level of throughput as the other members—indicating that the load is well-distributed on our test cluster—<strong>Processor Utilization</strong> is significantly lower on this member. </p>
+<p>
+<img id="f10uj09" alt="Bb734903.f10uj09(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC93538.gif" title="Bb734903.f10uj09(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.9 Resource utilization and throughput on ACDW518AS</strong>&nbsp;</p>
+<p>In the next scenario, we'll adjust the load balancing weight to reduce resource usage on the controller (ACDW516AS) and ACDW802AS. </p>
+<h5>Adjusted Load Balancing Weight</h5>
+<p>In order to take advantage of the lower processor utilization on ACDW518AS, we decided to increase the load balancing weight on this member. In the <em>membername</em>&nbsp;<strong>Properties</strong> dialog box, we set the server weight at the midway mark between the <strong>Average load</strong> and <strong>More load</strong> indicators. </p>
+<p>
+<strong>Note </strong>The impact of the amount of load added to a single member is more pronounced as the number of clients increases. Nonetheless, the graphs in Figure 10.10 serve to illustrate how a load balancing weight adjustment affects server performance. </p>
+<p>
+<img id="f10uj10" alt="Bb734903.f10uj10(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC14817.gif" title="Bb734903.f10uj10(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.10 Resource utilization on ACDW518AS after adjusting the load-balancing weight</strong>&nbsp;</p>
+<p>Referring to Figure 10.10, the graph labeled <strong>ACDW516AS</strong> shows our base performance metrics for <strong>Processor Utilization</strong> (<strong>A</strong>), <strong>Web GET Requests</strong> (<strong>B</strong>), and <strong>ASP Requests</strong> (<strong>C</strong>) after load balancing was adjusted. Note the following: </p>
+<ul>
+<li>
+<p>Both graphs show a spike. Note that the throughput is dropping and processor utilization is increasing, just before the first date/time indicator on the chart. This is the point where the weight was adjusted on ACDW518AS and the convergence took place.&nbsp;</p>
+</li>
+<li>
+<p>In the <strong>ACDW518AS</strong> graph, you can see where throughput and processor utilization increased after convergence.&nbsp;</p>
+</li>
+<li>
+<p>The white plot line (<strong>A1</strong>) in the <strong>ACDW516AS</strong> graph shows processor utilization for the cluster controller, taken from a previous test that was run before the load balancing adjustment. As you can see, processor utilization did decrease on the controller, as did throughput. Similar performance results were experienced on the ACDW802AS cluster member.&nbsp;</p>
+</li>
+</ul>
+<p>
+<strong>Note </strong>Even though the controller is the same class of server as ACDW518AS, higher processor utilization on the controller was expected. There are two reasons for this. First, there is a performance cost associated with the controller role; and second, there is the monitoring cost. For our tests, we used the cluster controller for all the performance monitoring displays that were generated. </p>
+<p>Our final scenario demonstrates the effect of scaling out the COM+ application cluster. </p>
+<h4>Scenario: Three-Node Web Cluster and Two-Node COM+ Application Cluster</h4>
+<p>Up to this point, we've been using a single server on the back-end component server tier to handle all the COM+ requests coming from the Web cluster. Processor utilization on this server typically ranged from 50 percent to 65 percent during our tests. Figure 10.11 provides two graphs. The first, labeled <strong>ACDW522AS/ACDW811AS</strong>, shows the processor utilization for the component servers in RKCOMCluster, the COM+ application cluster. The second graph, labeled <strong>RKWebCluster</strong>, provides a cluster-wide performance view. </p>
+<p>
+<img id="f10uj11" alt="Bb734903.f10uj11(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC147287.gif" title="Bb734903.f10uj11(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>
+<strong>Figure 10.11 Resource utilization after scaling out the COM+ application cluster</strong>&nbsp;</p>
+<p>Let's examine the graphs shown in Figure 10.11 in more detail, starting with the component servers. The cluster controller's processor utilization graph is labeled <strong>A</strong>; the new member's graph is <strong>A1</strong>. As you can see, the point where the new member is brought online is noticeable (approximate time 2:53 P.M.) and the reduction in the controller's processor load is significant. After the cluster is scaled out, processor utilization for both servers is evenly matched, which indicates that component requests are being well distributed between the two servers. </p>
+<p>The<strong> RKWebCluster</strong> graph provides a cluster-wide performance view, with <strong>Web GET Requests</strong> and <strong>ASP Requests</strong> aggregated as totals for all the members. </p>
+<p>
+<strong>Note </strong>The throughput levels indicated in the <strong>RKWebCluster</strong> graph remained consistent in all of our test scenarios. There were, of course, occasional drops when members were added, load-balancing weights adjusted, or cluster synchronization took place. </p>
+<p>Two processor utilization graphs (<strong>A</strong> and <strong>A1</strong>) are shown. The dark line is the graph for processor utilization after the COM+ application cluster is scaled out; the while line shows processor utilization when there was only one COM+ application server in RKCOMCluster. As these graphs indicate, scaling out the COM+ application cluster resulted in reduced processor utilization across the Web tier. </p>
+<p>The testing we did for this chapter is by no means exhaustive, but it gives you an idea of the performance monitoring capability that is at your disposal. To summarize, the Application Center performance monitoring interface: </p>
+<ul>
+<li>
+<p>Provides a commonly used collection of pre-installed performance counters&nbsp;</p>
+</li>
+<li>
+<p>Supports the creation of additional counters on a per-member or cluster-wide basis&nbsp;</p>
+</li>
+<li>
+<p>Supports a single console view for monitoring an individual member, an entire cluster, and multiple clusters&nbsp;</p>
+</li>
+</ul>
+<div>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">Top of page</a>
+<br>
+</div>
+<h3 id="EAAA">Resources </h3>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<p>The following books and Web sites provide additional information about performance analysis and tuning. </p>
+<h4>Books</h4>
+<p>
+<em>Microsoft Internet Information Server Resource Kit</em>, for Internet Information Server 4.0 (Microsoft Press, 1998) </p>
+<p>
+<em>Microsoft Internet Information Services Resource Guide</em>, for IIS 5.0 (Microsoft Press, 2000) </p>
+<p>
+<em>Microsoft Windows 2000 Resource Kit</em> (Microsoft Press, 2000) </p>
+<h4>Web Sites</h4>
+<p>"Capacity Planning" white paper </p>
+<p>
+<a href="http://www.microsoft.com/technet/archive/itsolutions/ecommerce/default.mspx">http://www.microsoft.com/technet/archive/itsolutions/ecommerce/default.mspx</a>&nbsp;</p>
+<p>"Maximizing IIS Performance" white paper </p>
+<p>
+<a href="http://www.microsoft.com/technet/prodtechnol/windows2000serv/technologies/iis/maintain/optimize/perflink.mspx">http://www.microsoft.com/technet/prodtechnol/windows2000serv/technologies/iis/maintain/optimize/perflink.mspx</a>&nbsp;</p>
+<p>Microsoft TechNet page for IIS-related information </p>
+<p>
+<a href="http://www.microsoft.com/technet/prodtechnol/windowsserver2003/technologies/webapp/iis/default.mspx">http://www.microsoft.com/technet/prodtechnol/windowsserver2003/technologies/webapp/iis/default.mspx</a>&nbsp;</p>
+<p>Microsoft Web Application Stress Tool Web site </p>
+<p>
+<a href="http://www.microsoft.com/technet/archive/itsolutions/intranet/downloads/webstres.mspx">http://www.microsoft.com/technet/archive/itsolutions/intranet/downloads/webstres.mspx</a>&nbsp;</p>
+<p>
+<img id="spacer" alt="Bb734903.spacer(en-us,TechNet.10).gif" src="./Chapter 10 - Working with Performance Counters_files/IC116709.gif" title="Bb734903.spacer(en-us,TechNet.10).gif" xmlns="">
+</p>
+<div>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">
+
+</a>
+<a href="http://technet.microsoft.com/en-us/library/bb734903.aspx#mainSection">Top of page</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+        
+
+
+
+<div id="contentFeedback">
+    <form method="post" action="http://technet.microsoft.com/en-us/library/feedback/add/bb734903.aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="WTtalpVjtLvFormT6da+8ZTbcGtfHJMd/i/8/2b82gQrhrmWJSVgkeLtmKqBv7W4Cgw9FMYWNvbrcweSdfXalywkKKBk+QK/G1mYHBf8khxHm/ZFnTs32lH6UnSsyX/oVszi1g==">
+    <div id="contentFeedbackContainer">
+        <div class="FeedbackTitleContainer">
+            <a name="feedback"></a>
+        Did you find this helpful?
+            <input id="rdIsUsefulYes" name="rdIsUseful" type="radio" value="1" onclick="toggleContentFeedback(&#39;Yes&#39;);"><label for="rdIsUsefulYes">Yes</label>
+            <input id="rdIsUsefulNo" name="rdIsUseful" type="radio" value="0" onclick="toggleContentFeedback(&#39;No&#39;);"><label for="rdIsUsefulNo">No</label>
+        
+        </div>
+        
+            <div id="contentFeedbackQAContainer">
+                
+                    <div id="feedbackListNoContainer" class="FeedbackListContainer">
+                        
+                            <div>
+                                <input id="chkbxNo201" name="chkbxNo" type="checkbox" value="201">
+                                <label for="chkbxNo201">Not accurate</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo202" name="chkbxNo" type="checkbox" value="202">
+                                <label for="chkbxNo202">Not enough depth</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo203" name="chkbxNo" type="checkbox" value="203">
+                                <label for="chkbxNo203">Need more code examples</label>
+                            </div>
+                        
+                    </div>
+                
+                <div class="FeedbackTellUsMoreContainer">
+                    <textarea id="feedbackText" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" onfocus="WatermarkFocus(this, &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)" onblur="WatermarkBlur(this, &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearchLoaded&#39;)" onmouseover="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeydown="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeyup="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)">Tell us more...</textarea>
+                </div>
+                <span class="counter">(<span id="feedbackTextCounter">1500</span> characters remaining)</span>
+                <input type="hidden" id="returnUrl" name="returnUrl" value="http://technet.microsoft.com/en-us/library/bb734903.aspx">
+                <input type="submit" id="submit" value="Submit" title="Click to Submit Feedback" onclick="WatermarkOnSubmit(document.getElementById(&#39;feedbackText&#39;), &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)">
+                <div style="clear: both;"></div>
+            </div>  
+        
+    </div>
+    </form>
+</div>
+
+    </div>
+    
+  </div>
+  
+    </div>
+    <div class="footer">
+        
+
+<div id="footer" class="technet footerContainer cl_footer_slice">
+  <div class="footerLogoContainer">
+    <div class="footerContent">
+    <div class="copyright">
+      © 2012 Microsoft. All rights reserved.</div>
+    <div class="footerLogo cl_footer_logo"></div>
+    <a href="http://technet.microsoft.com/en-us/cc300389">Terms of Use</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx">Trademarks</a><span class="pipe"> | </span>
+    <a href="http://go.microsoft.com/fwlink/?LinkId=248681">Privacy Statement</a>
+    <span class="pipe">| </span>
+    <span class="FeedbacklinkDisabled" id="FeedbacklinkDisabled">Site Feedback</span>
+    <a id="Feedbacklink" title="Site Feedback" class="FeedbackLink" href="javascript:void(0)">
+      Site Feedback
+        <span class="FeedbackButton clip20x21" id="FeedbackButton">
+          <img id="feedBackImg" class="cl_footer_feedback_icon" src="./Chapter 10 - Working with Performance Counters_files/ImageSprite.png" alt="Site Feedback">
+        </span>
+      </a>
+    
+  <div id="FeedbackContainer" class="FeedbackContainer">
+    <form id="siteFeedbackForm" method="post" action="http://technet.microsoft.com/en-us/library/feedback/add/bb734903.aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="yIrPb75IRgjRdG/13Xh7LKoG9Yw7XlOtEzRMv4DTBrRwMXevGW6owyhlHZXUHQylAmQHOffzniNSaFL8DNPLxVxxq7IGY2NuZ4Y+ZnK0zhKK9z5mANqEbT/fNf2nIt4IPeq6yw==">
+    <div class="FeedbackTitleContainer">
+        <div class="FeedbackTitle">
+            Site Feedback</div>
+        <div class="FeedbackCancel">
+            <a href="javascript:;" onclick="document.getElementById(&#39;FeedbackContainer&#39;).style.display = &#39;none&#39;;">x</a>
+            </div>
+    </div>
+    <div class="FeedbackData">
+        <div class="FeedbackInfoText">
+            Tell us about your experience...
+        </div>
+        <div class="QuestionText">
+            Did the page load quickly?
+        </div>
+        <div class="AnswerText">
+            
+            <span>
+                Yes<span>
+                    <input id="searchBox" name="searchBox" type="radio" value="1"></span></span>
+            
+            <span>
+                No<span>
+                    <input id="searchBox" name="searchBox" type="radio" value="0"></span></span>
+            
+        </div>
+        <div class="QuestionText">
+            Do you like the page design?
+        </div>
+        <div class="AnswerText">
+            
+            <span>
+                Yes<span>
+                    <input id="tabbedCode" name="tabbedCode" type="radio" value="1"></span></span>
+            
+            <span>
+                No<span>
+                    <input id="tabbedCode" name="tabbedCode" type="radio" value="0"></span></span>
+            
+        </div>
+        <div class="QuestionText">
+            Tell us more
+        </div>
+        <div class="FeedbackTextAreaContainer">
+            <textarea id="feedbackText" data-maxlength="4000" name="feedbackText" cols="25" rows="5" class="FeedbackTextArea"></textarea>
+            
+            <textarea id="feedbackDescription" name="feedbackDescription" cols="25" rows="10" style="display:none;">Enter description here.</textarea>
+            <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+            <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+            <input type="hidden" id="ClientIP" name="ClientIP" value="">
+            <input type="hidden" id="ClientOS" name="ClientOS" value="">
+            <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+            <input type="hidden" id="ClientTime" name="ClientTime" value="">
+            <input type="hidden" id="ClientTimeZone" name="ClientTimeZone" value="">
+            
+            
+        </div>
+        <div>
+            <input id="siteFeedbackSubmit" type="submit" value="Send" class="FeedbackSubmit" onclick="submitSiteFeedback(&#39;-1&#39;);">
+        </div>
+    </div>
+    <input type="hidden" id="returnUrl" name="returnUrl" value="http://technet.microsoft.com/en-us/library/bb734903.aspx">
+    
+    
+    <input type="hidden" id="feedBackVersion" name="feedBackVersion" value="1">
+    
+  </form> 
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+    
+    
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        <div class="MetricsContainer">
+            
+    <div class="WebtrendsContainer">
+      
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsjwb9vb00000c932fd0rjc7_5p3t/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+    </div>
+    
+    <div class="OmnitureContainer">
+      
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojstechnet.112.2o7.net/b/ss/msstonojstechnet/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+    </div>
+    
+        </div>
+        
+
+<script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index],elem=document.createElement("script"),elem.className="mtps-injected",elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext,script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }"),parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.technet.microsoft.com\", \r\n\t\"js\": \"http://i2.technet.microsoft.com\", \r\n\t\"css\": \"http://i3.technet.microsoft.com\"\r\n});\r\n/**/" },
+	{ txt: "//\n    MTPS = window.MTPS || {};\n    MTPS.Watermarks = window.MTPS.Watermarks || {};\n    MTPS.Watermarks.SearchInput = {\n        \"control\": \"SearchInput\",\n        \"defaultValue\": \"Search TechNet with Bing\",\n        \"defaultCSS\": \"searchTextBox\",\n        \"focusCSS\": \"searchTextBoxTrue\"\n    };\n    function checkSearchBox() {\n        if (document.getElementById(\"SearchInput\").value == MTPS.Watermarks.SearchInput.defaultValue) {\n            document.getElementById(\"SearchInput\").value = \"\";\n        }\n    }\n //" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/bb734903(d=lightweight,l=en-us,v=technet.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027technet.microsoft.com\u0027;\n  var wt_pathlist = \u0027/technet/\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_techcenter\u0027;\n  var wt_siteid = \u0027TECHNET\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsjwb9vb00000c932fd0rjc7_5p3t\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_technet_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"7013912f-3299-44b5-82ff-42a62a4f2261\";\n/**/" },
+	{ url: "http://i2.technet.microsoft.com/Combined.js?resources=0:Library,1:webtrendsscript,2:omni_rsid_TechNet;/Areas/Brand/Content:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/TechNet:2&amp;hashKey=F9D5D87E5F2B0BF3F92E4535A45559D5" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ url: "http://i2.technet.microsoft.com/Combined.js?resources=0:Utilities,1:LibraryDeferred;/Areas/Epx/Content/Scripts:0,/Areas/Brand/Content:1&amp;hashKey=2E2E8B4FD00626CC1DA6E9E1CC46A483" },
+	{ txt: "/**/\n/**/\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \n\t\"image\": \"http://i.technet.microsoft.com\", \n\t\"js\": \"http://i2.technet.microsoft.com\", \n\t\"css\": \"http://i3.technet.microsoft.com\"\n});\n/**/\n/**/" },
+	{ txt: "/**/\nvar omnitureTracking = true;\n/**/" },
+	{ url: "http://i2.technet.microsoft.com/Areas/Epx/Themes/Shared/Content/megablade.1.js" },
+	{ txt: "//\n    MTPS = window.MTPS || {};\n    MTPS.ExportValues = window.MTPS.ExportValues || {};\n    MTPS.ExportValues.PrintMultipleUrl = \"/en-us/library/export/print/?returnurl=%252fen-us%252flibrary%252fbb734903.aspx\";\n    MTPS.ExportValues.PrintHelpUrl = \"/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fbb734903.aspx\";\n    //" },
+	{ url: "http://i2.technet.microsoft.com/Areas/Epx/Library/Content/Toc.js" },
+	{ txt: "//\n    MTPS = window.MTPS || {};\n    MTPS.TopicNodes = {\n        \u0027last\u0027 : \u0027\u0027\n    };\n    //" },
+	{ url: "http://i2.technet.microsoft.com/Combined.js?resources=0:FeedbackCounter,0:Feedback,1:SurveyBroker;/Areas/Epx/Shared/Content:0,/Areas/Epx/Content/Scripts:1&amp;hashKey=2D2B249785B5E08F21D9DA6BC248BC14" }
+]);
+
+/*]]>*/
+</script>
+<script src="./Chapter 10 - Working with Performance Counters_files/broker-config.js"></script><div style="display: none; " id="_WEDCSInsertedData"><iframe id="_msnFrame" src="./Chapter 10 - Working with Performance Counters_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

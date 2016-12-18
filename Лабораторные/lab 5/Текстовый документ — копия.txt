@@ -1,0 +1,7 @@
+C:\Documents and Settings\Admin>netstat -n -b
+
+Активные подключения
+
+  Имя    Локальный адрес        Внешний адрес          Состояние       PID
+  TCP    10.0.0.10:23           172.16.0.1:1031        ESTABLISHED     2036
+  [tlntsvr.exe]
